@@ -15,7 +15,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.StudentContactsController = void 0;
 const common_1 = require("@nestjs/common");
 const student_contacts_service_1 = require("./student-contacts.service");
-const createStudentContact_dto_1 = require("./dto/createStudentContact.dto");
 const createStudentRelation_dto_1 = require("./dto/createStudentRelation.dto");
 let StudentContactsController = class StudentContactsController {
     studentContactsService;
@@ -25,14 +24,14 @@ let StudentContactsController = class StudentContactsController {
     findAll() {
         return this.studentContactsService.findAll();
     }
+    findAllContacts() {
+        return this.studentContactsService.findAllContacts();
+    }
     findOne(id) {
-        return this.studentContactsService.findOne(id);
+        return this.studentContactsService.findContactByContactId(id);
     }
     findContactsByStudent(id) {
         return this.studentContactsService.findContactByStudent(id);
-    }
-    createContact(data) {
-        return this.studentContactsService.createContact(data);
     }
     createRelationship(data) {
         return this.studentContactsService.createRelation(data);
@@ -46,8 +45,14 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], StudentContactsController.prototype, "findAll", null);
 __decorate([
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
+    (0, common_1.Get)('/contact'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], StudentContactsController.prototype, "findAllContacts", null);
+__decorate([
+    (0, common_1.Get)('/contact/:id'),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
@@ -60,14 +65,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], StudentContactsController.prototype, "findContactsByStudent", null);
 __decorate([
-    (0, common_1.Post)('/contact'),
-    __param(0, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [createStudentContact_dto_1.CreateStudentContactDto]),
-    __metadata("design:returntype", void 0)
-], StudentContactsController.prototype, "createContact", null);
-__decorate([
-    (0, common_1.Post)('/realationship'),
+    (0, common_1.Post)('/relationship'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [createStudentRelation_dto_1.CreateStudentRelationDto]),

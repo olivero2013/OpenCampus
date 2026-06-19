@@ -47,7 +47,16 @@ export declare const ContactScalarFieldEnum: {
     readonly lastname: "lastname";
     readonly preferredname: "preferredname";
     readonly phoneNumber: "phoneNumber";
+    readonly mobileNumber: "mobileNumber";
+    readonly workPhone: "workPhone";
     readonly email: "email";
+    readonly address1: "address1";
+    readonly address2: "address2";
+    readonly city: "city";
+    readonly state: "state";
+    readonly zipCode: "zipCode";
+    readonly employer: "employer";
+    readonly occupation: "occupation";
 };
 export type ContactScalarFieldEnum = (typeof ContactScalarFieldEnum)[keyof typeof ContactScalarFieldEnum];
 export declare const StudentContactScalarFieldEnum: {
@@ -57,7 +66,15 @@ export declare const StudentContactScalarFieldEnum: {
     readonly relationship: "relationship";
     readonly emergencyContact: "emergencyContact";
     readonly pickupAuthorized: "pickupAuthorized";
+    readonly primaryGuardian: "primaryGuardian";
     readonly receivesMailings: "receivesMailings";
+    readonly receivesReportCards: "receivesReportCards";
+    readonly receivesAttendanceAlerts: "receivesAttendanceAlerts";
+    readonly receivesDisciplineAlerts: "receivesDisciplineAlerts";
+    readonly livesWithStudent: "livesWithStudent";
+    readonly custodyRights: "custodyRights";
+    readonly educationalRights: "educationalRights";
+    readonly sortOrder: "sortOrder";
 };
 export type StudentContactScalarFieldEnum = (typeof StudentContactScalarFieldEnum)[keyof typeof StudentContactScalarFieldEnum];
 export declare const SortOrder: {
@@ -86,7 +103,16 @@ export declare const ContactOrderByRelevanceFieldEnum: {
     readonly lastname: "lastname";
     readonly preferredname: "preferredname";
     readonly phoneNumber: "phoneNumber";
+    readonly mobileNumber: "mobileNumber";
+    readonly workPhone: "workPhone";
     readonly email: "email";
+    readonly address1: "address1";
+    readonly address2: "address2";
+    readonly city: "city";
+    readonly state: "state";
+    readonly zipCode: "zipCode";
+    readonly employer: "employer";
+    readonly occupation: "occupation";
 };
 export type ContactOrderByRelevanceFieldEnum = (typeof ContactOrderByRelevanceFieldEnum)[keyof typeof ContactOrderByRelevanceFieldEnum];
 export declare const StudentContactOrderByRelevanceFieldEnum: {

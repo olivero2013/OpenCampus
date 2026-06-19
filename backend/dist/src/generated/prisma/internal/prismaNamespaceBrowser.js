@@ -77,7 +77,16 @@ exports.ContactScalarFieldEnum = {
     lastname: 'lastname',
     preferredname: 'preferredname',
     phoneNumber: 'phoneNumber',
-    email: 'email'
+    mobileNumber: 'mobileNumber',
+    workPhone: 'workPhone',
+    email: 'email',
+    address1: 'address1',
+    address2: 'address2',
+    city: 'city',
+    state: 'state',
+    zipCode: 'zipCode',
+    employer: 'employer',
+    occupation: 'occupation'
 };
 exports.StudentContactScalarFieldEnum = {
     id: 'id',
@@ -86,7 +95,15 @@ exports.StudentContactScalarFieldEnum = {
     relationship: 'relationship',
     emergencyContact: 'emergencyContact',
     pickupAuthorized: 'pickupAuthorized',
-    receivesMailings: 'receivesMailings'
+    primaryGuardian: 'primaryGuardian',
+    receivesMailings: 'receivesMailings',
+    receivesReportCards: 'receivesReportCards',
+    receivesAttendanceAlerts: 'receivesAttendanceAlerts',
+    receivesDisciplineAlerts: 'receivesDisciplineAlerts',
+    livesWithStudent: 'livesWithStudent',
+    custodyRights: 'custodyRights',
+    educationalRights: 'educationalRights',
+    sortOrder: 'sortOrder'
 };
 exports.SortOrder = {
     asc: 'asc',
@@ -110,7 +127,16 @@ exports.ContactOrderByRelevanceFieldEnum = {
     lastname: 'lastname',
     preferredname: 'preferredname',
     phoneNumber: 'phoneNumber',
-    email: 'email'
+    mobileNumber: 'mobileNumber',
+    workPhone: 'workPhone',
+    email: 'email',
+    address1: 'address1',
+    address2: 'address2',
+    city: 'city',
+    state: 'state',
+    zipCode: 'zipCode',
+    employer: 'employer',
+    occupation: 'occupation'
 };
 exports.StudentContactOrderByRelevanceFieldEnum = {
     relationship: 'relationship'

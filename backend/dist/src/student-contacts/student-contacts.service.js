@@ -20,11 +20,14 @@ let StudentContactsService = class StudentContactsService {
     findAll() {
         return this.primsa.studentContact.findMany({ include: { contact: true } });
     }
-    findOne(id) {
-        return this.primsa.studentContact.findUnique({ where: { id }, include: { contact: true } });
+    findContactByContactId(id) {
+        return this.primsa.contact.findUnique({ where: { id }, include: { students: true } });
+    }
+    findAllContacts() {
+        return this.primsa.contact.findMany({ include: { students: true } });
     }
     findContactByStudent(id) {
-        return this.primsa.studentContact.findMany({ where: { studentId: id }, include: { contact: true } });
+        return this.primsa.contact.findMany({ where: { students: { some: { studentId: id } } }, include: { students: { where: { studentId: id } } } });
     }
     createContact(data) {
         return this.primsa.contact.create({ data });

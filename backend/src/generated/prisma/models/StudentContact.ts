@@ -30,12 +30,14 @@ export type StudentContactAvgAggregateOutputType = {
   id: number | null
   studentId: number | null
   contactId: number | null
+  sortOrder: number | null
 }
 
 export type StudentContactSumAggregateOutputType = {
   id: number | null
   studentId: number | null
   contactId: number | null
+  sortOrder: number | null
 }
 
 export type StudentContactMinAggregateOutputType = {
@@ -45,7 +47,15 @@ export type StudentContactMinAggregateOutputType = {
   relationship: string | null
   emergencyContact: boolean | null
   pickupAuthorized: boolean | null
+  primaryGuardian: boolean | null
   receivesMailings: boolean | null
+  receivesReportCards: boolean | null
+  receivesAttendanceAlerts: boolean | null
+  receivesDisciplineAlerts: boolean | null
+  livesWithStudent: boolean | null
+  custodyRights: boolean | null
+  educationalRights: boolean | null
+  sortOrder: number | null
 }
 
 export type StudentContactMaxAggregateOutputType = {
@@ -55,7 +65,15 @@ export type StudentContactMaxAggregateOutputType = {
   relationship: string | null
   emergencyContact: boolean | null
   pickupAuthorized: boolean | null
+  primaryGuardian: boolean | null
   receivesMailings: boolean | null
+  receivesReportCards: boolean | null
+  receivesAttendanceAlerts: boolean | null
+  receivesDisciplineAlerts: boolean | null
+  livesWithStudent: boolean | null
+  custodyRights: boolean | null
+  educationalRights: boolean | null
+  sortOrder: number | null
 }
 
 export type StudentContactCountAggregateOutputType = {
@@ -65,7 +83,15 @@ export type StudentContactCountAggregateOutputType = {
   relationship: number
   emergencyContact: number
   pickupAuthorized: number
+  primaryGuardian: number
   receivesMailings: number
+  receivesReportCards: number
+  receivesAttendanceAlerts: number
+  receivesDisciplineAlerts: number
+  livesWithStudent: number
+  custodyRights: number
+  educationalRights: number
+  sortOrder: number
   _all: number
 }
 
@@ -74,12 +100,14 @@ export type StudentContactAvgAggregateInputType = {
   id?: true
   studentId?: true
   contactId?: true
+  sortOrder?: true
 }
 
 export type StudentContactSumAggregateInputType = {
   id?: true
   studentId?: true
   contactId?: true
+  sortOrder?: true
 }
 
 export type StudentContactMinAggregateInputType = {
@@ -89,7 +117,15 @@ export type StudentContactMinAggregateInputType = {
   relationship?: true
   emergencyContact?: true
   pickupAuthorized?: true
+  primaryGuardian?: true
   receivesMailings?: true
+  receivesReportCards?: true
+  receivesAttendanceAlerts?: true
+  receivesDisciplineAlerts?: true
+  livesWithStudent?: true
+  custodyRights?: true
+  educationalRights?: true
+  sortOrder?: true
 }
 
 export type StudentContactMaxAggregateInputType = {
@@ -99,7 +135,15 @@ export type StudentContactMaxAggregateInputType = {
   relationship?: true
   emergencyContact?: true
   pickupAuthorized?: true
+  primaryGuardian?: true
   receivesMailings?: true
+  receivesReportCards?: true
+  receivesAttendanceAlerts?: true
+  receivesDisciplineAlerts?: true
+  livesWithStudent?: true
+  custodyRights?: true
+  educationalRights?: true
+  sortOrder?: true
 }
 
 export type StudentContactCountAggregateInputType = {
@@ -109,7 +153,15 @@ export type StudentContactCountAggregateInputType = {
   relationship?: true
   emergencyContact?: true
   pickupAuthorized?: true
+  primaryGuardian?: true
   receivesMailings?: true
+  receivesReportCards?: true
+  receivesAttendanceAlerts?: true
+  receivesDisciplineAlerts?: true
+  livesWithStudent?: true
+  custodyRights?: true
+  educationalRights?: true
+  sortOrder?: true
   _all?: true
 }
 
@@ -203,10 +255,18 @@ export type StudentContactGroupByOutputType = {
   id: number
   studentId: number
   contactId: number
-  relationship: string | null
+  relationship: string
   emergencyContact: boolean
   pickupAuthorized: boolean
+  primaryGuardian: boolean
   receivesMailings: boolean
+  receivesReportCards: boolean
+  receivesAttendanceAlerts: boolean
+  receivesDisciplineAlerts: boolean
+  livesWithStudent: boolean
+  custodyRights: boolean
+  educationalRights: boolean
+  sortOrder: number
   _count: StudentContactCountAggregateOutputType | null
   _avg: StudentContactAvgAggregateOutputType | null
   _sum: StudentContactSumAggregateOutputType | null
@@ -236,10 +296,18 @@ export type StudentContactWhereInput = {
   id?: Prisma.IntFilter<"StudentContact"> | number
   studentId?: Prisma.IntFilter<"StudentContact"> | number
   contactId?: Prisma.IntFilter<"StudentContact"> | number
-  relationship?: Prisma.StringNullableFilter<"StudentContact"> | string | null
+  relationship?: Prisma.StringFilter<"StudentContact"> | string
   emergencyContact?: Prisma.BoolFilter<"StudentContact"> | boolean
   pickupAuthorized?: Prisma.BoolFilter<"StudentContact"> | boolean
+  primaryGuardian?: Prisma.BoolFilter<"StudentContact"> | boolean
   receivesMailings?: Prisma.BoolFilter<"StudentContact"> | boolean
+  receivesReportCards?: Prisma.BoolFilter<"StudentContact"> | boolean
+  receivesAttendanceAlerts?: Prisma.BoolFilter<"StudentContact"> | boolean
+  receivesDisciplineAlerts?: Prisma.BoolFilter<"StudentContact"> | boolean
+  livesWithStudent?: Prisma.BoolFilter<"StudentContact"> | boolean
+  custodyRights?: Prisma.BoolFilter<"StudentContact"> | boolean
+  educationalRights?: Prisma.BoolFilter<"StudentContact"> | boolean
+  sortOrder?: Prisma.IntFilter<"StudentContact"> | number
   student?: Prisma.XOR<Prisma.StudentScalarRelationFilter, Prisma.StudentWhereInput>
   contact?: Prisma.XOR<Prisma.ContactScalarRelationFilter, Prisma.ContactWhereInput>
 }
@@ -248,10 +316,18 @@ export type StudentContactOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   studentId?: Prisma.SortOrder
   contactId?: Prisma.SortOrder
-  relationship?: Prisma.SortOrderInput | Prisma.SortOrder
+  relationship?: Prisma.SortOrder
   emergencyContact?: Prisma.SortOrder
   pickupAuthorized?: Prisma.SortOrder
+  primaryGuardian?: Prisma.SortOrder
   receivesMailings?: Prisma.SortOrder
+  receivesReportCards?: Prisma.SortOrder
+  receivesAttendanceAlerts?: Prisma.SortOrder
+  receivesDisciplineAlerts?: Prisma.SortOrder
+  livesWithStudent?: Prisma.SortOrder
+  custodyRights?: Prisma.SortOrder
+  educationalRights?: Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
   student?: Prisma.StudentOrderByWithRelationInput
   contact?: Prisma.ContactOrderByWithRelationInput
   _relevance?: Prisma.StudentContactOrderByRelevanceInput
@@ -265,10 +341,18 @@ export type StudentContactWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.StudentContactWhereInput | Prisma.StudentContactWhereInput[]
   studentId?: Prisma.IntFilter<"StudentContact"> | number
   contactId?: Prisma.IntFilter<"StudentContact"> | number
-  relationship?: Prisma.StringNullableFilter<"StudentContact"> | string | null
+  relationship?: Prisma.StringFilter<"StudentContact"> | string
   emergencyContact?: Prisma.BoolFilter<"StudentContact"> | boolean
   pickupAuthorized?: Prisma.BoolFilter<"StudentContact"> | boolean
+  primaryGuardian?: Prisma.BoolFilter<"StudentContact"> | boolean
   receivesMailings?: Prisma.BoolFilter<"StudentContact"> | boolean
+  receivesReportCards?: Prisma.BoolFilter<"StudentContact"> | boolean
+  receivesAttendanceAlerts?: Prisma.BoolFilter<"StudentContact"> | boolean
+  receivesDisciplineAlerts?: Prisma.BoolFilter<"StudentContact"> | boolean
+  livesWithStudent?: Prisma.BoolFilter<"StudentContact"> | boolean
+  custodyRights?: Prisma.BoolFilter<"StudentContact"> | boolean
+  educationalRights?: Prisma.BoolFilter<"StudentContact"> | boolean
+  sortOrder?: Prisma.IntFilter<"StudentContact"> | number
   student?: Prisma.XOR<Prisma.StudentScalarRelationFilter, Prisma.StudentWhereInput>
   contact?: Prisma.XOR<Prisma.ContactScalarRelationFilter, Prisma.ContactWhereInput>
 }, "id" | "studentId_contactId">
@@ -277,10 +361,18 @@ export type StudentContactOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   studentId?: Prisma.SortOrder
   contactId?: Prisma.SortOrder
-  relationship?: Prisma.SortOrderInput | Prisma.SortOrder
+  relationship?: Prisma.SortOrder
   emergencyContact?: Prisma.SortOrder
   pickupAuthorized?: Prisma.SortOrder
+  primaryGuardian?: Prisma.SortOrder
   receivesMailings?: Prisma.SortOrder
+  receivesReportCards?: Prisma.SortOrder
+  receivesAttendanceAlerts?: Prisma.SortOrder
+  receivesDisciplineAlerts?: Prisma.SortOrder
+  livesWithStudent?: Prisma.SortOrder
+  custodyRights?: Prisma.SortOrder
+  educationalRights?: Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
   _count?: Prisma.StudentContactCountOrderByAggregateInput
   _avg?: Prisma.StudentContactAvgOrderByAggregateInput
   _max?: Prisma.StudentContactMaxOrderByAggregateInput
@@ -295,17 +387,33 @@ export type StudentContactScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"StudentContact"> | number
   studentId?: Prisma.IntWithAggregatesFilter<"StudentContact"> | number
   contactId?: Prisma.IntWithAggregatesFilter<"StudentContact"> | number
-  relationship?: Prisma.StringNullableWithAggregatesFilter<"StudentContact"> | string | null
+  relationship?: Prisma.StringWithAggregatesFilter<"StudentContact"> | string
   emergencyContact?: Prisma.BoolWithAggregatesFilter<"StudentContact"> | boolean
   pickupAuthorized?: Prisma.BoolWithAggregatesFilter<"StudentContact"> | boolean
+  primaryGuardian?: Prisma.BoolWithAggregatesFilter<"StudentContact"> | boolean
   receivesMailings?: Prisma.BoolWithAggregatesFilter<"StudentContact"> | boolean
+  receivesReportCards?: Prisma.BoolWithAggregatesFilter<"StudentContact"> | boolean
+  receivesAttendanceAlerts?: Prisma.BoolWithAggregatesFilter<"StudentContact"> | boolean
+  receivesDisciplineAlerts?: Prisma.BoolWithAggregatesFilter<"StudentContact"> | boolean
+  livesWithStudent?: Prisma.BoolWithAggregatesFilter<"StudentContact"> | boolean
+  custodyRights?: Prisma.BoolWithAggregatesFilter<"StudentContact"> | boolean
+  educationalRights?: Prisma.BoolWithAggregatesFilter<"StudentContact"> | boolean
+  sortOrder?: Prisma.IntWithAggregatesFilter<"StudentContact"> | number
 }
 
 export type StudentContactCreateInput = {
-  relationship?: string | null
+  relationship: string
   emergencyContact?: boolean
   pickupAuthorized?: boolean
+  primaryGuardian?: boolean
   receivesMailings?: boolean
+  receivesReportCards?: boolean
+  receivesAttendanceAlerts?: boolean
+  receivesDisciplineAlerts?: boolean
+  livesWithStudent?: boolean
+  custodyRights?: boolean
+  educationalRights?: boolean
+  sortOrder?: number
   student: Prisma.StudentCreateNestedOneWithoutContactsInput
   contact: Prisma.ContactCreateNestedOneWithoutStudentsInput
 }
@@ -314,17 +422,33 @@ export type StudentContactUncheckedCreateInput = {
   id?: number
   studentId: number
   contactId: number
-  relationship?: string | null
+  relationship: string
   emergencyContact?: boolean
   pickupAuthorized?: boolean
+  primaryGuardian?: boolean
   receivesMailings?: boolean
+  receivesReportCards?: boolean
+  receivesAttendanceAlerts?: boolean
+  receivesDisciplineAlerts?: boolean
+  livesWithStudent?: boolean
+  custodyRights?: boolean
+  educationalRights?: boolean
+  sortOrder?: number
 }
 
 export type StudentContactUpdateInput = {
-  relationship?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  relationship?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact?: Prisma.BoolFieldUpdateOperationsInput | boolean
   pickupAuthorized?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  primaryGuardian?: Prisma.BoolFieldUpdateOperationsInput | boolean
   receivesMailings?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesReportCards?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesAttendanceAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesDisciplineAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  livesWithStudent?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  custodyRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  educationalRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   student?: Prisma.StudentUpdateOneRequiredWithoutContactsNestedInput
   contact?: Prisma.ContactUpdateOneRequiredWithoutStudentsNestedInput
 }
@@ -333,37 +457,69 @@ export type StudentContactUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   studentId?: Prisma.IntFieldUpdateOperationsInput | number
   contactId?: Prisma.IntFieldUpdateOperationsInput | number
-  relationship?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  relationship?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact?: Prisma.BoolFieldUpdateOperationsInput | boolean
   pickupAuthorized?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  primaryGuardian?: Prisma.BoolFieldUpdateOperationsInput | boolean
   receivesMailings?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesReportCards?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesAttendanceAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesDisciplineAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  livesWithStudent?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  custodyRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  educationalRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type StudentContactCreateManyInput = {
   id?: number
   studentId: number
   contactId: number
-  relationship?: string | null
+  relationship: string
   emergencyContact?: boolean
   pickupAuthorized?: boolean
+  primaryGuardian?: boolean
   receivesMailings?: boolean
+  receivesReportCards?: boolean
+  receivesAttendanceAlerts?: boolean
+  receivesDisciplineAlerts?: boolean
+  livesWithStudent?: boolean
+  custodyRights?: boolean
+  educationalRights?: boolean
+  sortOrder?: number
 }
 
 export type StudentContactUpdateManyMutationInput = {
-  relationship?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  relationship?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact?: Prisma.BoolFieldUpdateOperationsInput | boolean
   pickupAuthorized?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  primaryGuardian?: Prisma.BoolFieldUpdateOperationsInput | boolean
   receivesMailings?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesReportCards?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesAttendanceAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesDisciplineAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  livesWithStudent?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  custodyRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  educationalRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type StudentContactUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   studentId?: Prisma.IntFieldUpdateOperationsInput | number
   contactId?: Prisma.IntFieldUpdateOperationsInput | number
-  relationship?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  relationship?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact?: Prisma.BoolFieldUpdateOperationsInput | boolean
   pickupAuthorized?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  primaryGuardian?: Prisma.BoolFieldUpdateOperationsInput | boolean
   receivesMailings?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesReportCards?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesAttendanceAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesDisciplineAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  livesWithStudent?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  custodyRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  educationalRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type StudentContactListRelationFilter = {
@@ -394,13 +550,22 @@ export type StudentContactCountOrderByAggregateInput = {
   relationship?: Prisma.SortOrder
   emergencyContact?: Prisma.SortOrder
   pickupAuthorized?: Prisma.SortOrder
+  primaryGuardian?: Prisma.SortOrder
   receivesMailings?: Prisma.SortOrder
+  receivesReportCards?: Prisma.SortOrder
+  receivesAttendanceAlerts?: Prisma.SortOrder
+  receivesDisciplineAlerts?: Prisma.SortOrder
+  livesWithStudent?: Prisma.SortOrder
+  custodyRights?: Prisma.SortOrder
+  educationalRights?: Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
 }
 
 export type StudentContactAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   studentId?: Prisma.SortOrder
   contactId?: Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
 }
 
 export type StudentContactMaxOrderByAggregateInput = {
@@ -410,7 +575,15 @@ export type StudentContactMaxOrderByAggregateInput = {
   relationship?: Prisma.SortOrder
   emergencyContact?: Prisma.SortOrder
   pickupAuthorized?: Prisma.SortOrder
+  primaryGuardian?: Prisma.SortOrder
   receivesMailings?: Prisma.SortOrder
+  receivesReportCards?: Prisma.SortOrder
+  receivesAttendanceAlerts?: Prisma.SortOrder
+  receivesDisciplineAlerts?: Prisma.SortOrder
+  livesWithStudent?: Prisma.SortOrder
+  custodyRights?: Prisma.SortOrder
+  educationalRights?: Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
 }
 
 export type StudentContactMinOrderByAggregateInput = {
@@ -420,13 +593,22 @@ export type StudentContactMinOrderByAggregateInput = {
   relationship?: Prisma.SortOrder
   emergencyContact?: Prisma.SortOrder
   pickupAuthorized?: Prisma.SortOrder
+  primaryGuardian?: Prisma.SortOrder
   receivesMailings?: Prisma.SortOrder
+  receivesReportCards?: Prisma.SortOrder
+  receivesAttendanceAlerts?: Prisma.SortOrder
+  receivesDisciplineAlerts?: Prisma.SortOrder
+  livesWithStudent?: Prisma.SortOrder
+  custodyRights?: Prisma.SortOrder
+  educationalRights?: Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
 }
 
 export type StudentContactSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   studentId?: Prisma.SortOrder
   contactId?: Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
 }
 
 export type StudentContactCreateNestedManyWithoutStudentInput = {
@@ -514,20 +696,36 @@ export type StudentContactUncheckedUpdateManyWithoutContactNestedInput = {
 }
 
 export type StudentContactCreateWithoutStudentInput = {
-  relationship?: string | null
+  relationship: string
   emergencyContact?: boolean
   pickupAuthorized?: boolean
+  primaryGuardian?: boolean
   receivesMailings?: boolean
+  receivesReportCards?: boolean
+  receivesAttendanceAlerts?: boolean
+  receivesDisciplineAlerts?: boolean
+  livesWithStudent?: boolean
+  custodyRights?: boolean
+  educationalRights?: boolean
+  sortOrder?: number
   contact: Prisma.ContactCreateNestedOneWithoutStudentsInput
 }
 
 export type StudentContactUncheckedCreateWithoutStudentInput = {
   id?: number
   contactId: number
-  relationship?: string | null
+  relationship: string
   emergencyContact?: boolean
   pickupAuthorized?: boolean
+  primaryGuardian?: boolean
   receivesMailings?: boolean
+  receivesReportCards?: boolean
+  receivesAttendanceAlerts?: boolean
+  receivesDisciplineAlerts?: boolean
+  livesWithStudent?: boolean
+  custodyRights?: boolean
+  educationalRights?: boolean
+  sortOrder?: number
 }
 
 export type StudentContactCreateOrConnectWithoutStudentInput = {
@@ -563,27 +761,51 @@ export type StudentContactScalarWhereInput = {
   id?: Prisma.IntFilter<"StudentContact"> | number
   studentId?: Prisma.IntFilter<"StudentContact"> | number
   contactId?: Prisma.IntFilter<"StudentContact"> | number
-  relationship?: Prisma.StringNullableFilter<"StudentContact"> | string | null
+  relationship?: Prisma.StringFilter<"StudentContact"> | string
   emergencyContact?: Prisma.BoolFilter<"StudentContact"> | boolean
   pickupAuthorized?: Prisma.BoolFilter<"StudentContact"> | boolean
+  primaryGuardian?: Prisma.BoolFilter<"StudentContact"> | boolean
   receivesMailings?: Prisma.BoolFilter<"StudentContact"> | boolean
+  receivesReportCards?: Prisma.BoolFilter<"StudentContact"> | boolean
+  receivesAttendanceAlerts?: Prisma.BoolFilter<"StudentContact"> | boolean
+  receivesDisciplineAlerts?: Prisma.BoolFilter<"StudentContact"> | boolean
+  livesWithStudent?: Prisma.BoolFilter<"StudentContact"> | boolean
+  custodyRights?: Prisma.BoolFilter<"StudentContact"> | boolean
+  educationalRights?: Prisma.BoolFilter<"StudentContact"> | boolean
+  sortOrder?: Prisma.IntFilter<"StudentContact"> | number
 }
 
 export type StudentContactCreateWithoutContactInput = {
-  relationship?: string | null
+  relationship: string
   emergencyContact?: boolean
   pickupAuthorized?: boolean
+  primaryGuardian?: boolean
   receivesMailings?: boolean
+  receivesReportCards?: boolean
+  receivesAttendanceAlerts?: boolean
+  receivesDisciplineAlerts?: boolean
+  livesWithStudent?: boolean
+  custodyRights?: boolean
+  educationalRights?: boolean
+  sortOrder?: number
   student: Prisma.StudentCreateNestedOneWithoutContactsInput
 }
 
 export type StudentContactUncheckedCreateWithoutContactInput = {
   id?: number
   studentId: number
-  relationship?: string | null
+  relationship: string
   emergencyContact?: boolean
   pickupAuthorized?: boolean
+  primaryGuardian?: boolean
   receivesMailings?: boolean
+  receivesReportCards?: boolean
+  receivesAttendanceAlerts?: boolean
+  receivesDisciplineAlerts?: boolean
+  livesWithStudent?: boolean
+  custodyRights?: boolean
+  educationalRights?: boolean
+  sortOrder?: number
 }
 
 export type StudentContactCreateOrConnectWithoutContactInput = {
@@ -615,71 +837,135 @@ export type StudentContactUpdateManyWithWhereWithoutContactInput = {
 export type StudentContactCreateManyStudentInput = {
   id?: number
   contactId: number
-  relationship?: string | null
+  relationship: string
   emergencyContact?: boolean
   pickupAuthorized?: boolean
+  primaryGuardian?: boolean
   receivesMailings?: boolean
+  receivesReportCards?: boolean
+  receivesAttendanceAlerts?: boolean
+  receivesDisciplineAlerts?: boolean
+  livesWithStudent?: boolean
+  custodyRights?: boolean
+  educationalRights?: boolean
+  sortOrder?: number
 }
 
 export type StudentContactUpdateWithoutStudentInput = {
-  relationship?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  relationship?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact?: Prisma.BoolFieldUpdateOperationsInput | boolean
   pickupAuthorized?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  primaryGuardian?: Prisma.BoolFieldUpdateOperationsInput | boolean
   receivesMailings?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesReportCards?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesAttendanceAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesDisciplineAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  livesWithStudent?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  custodyRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  educationalRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   contact?: Prisma.ContactUpdateOneRequiredWithoutStudentsNestedInput
 }
 
 export type StudentContactUncheckedUpdateWithoutStudentInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   contactId?: Prisma.IntFieldUpdateOperationsInput | number
-  relationship?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  relationship?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact?: Prisma.BoolFieldUpdateOperationsInput | boolean
   pickupAuthorized?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  primaryGuardian?: Prisma.BoolFieldUpdateOperationsInput | boolean
   receivesMailings?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesReportCards?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesAttendanceAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesDisciplineAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  livesWithStudent?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  custodyRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  educationalRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type StudentContactUncheckedUpdateManyWithoutStudentInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   contactId?: Prisma.IntFieldUpdateOperationsInput | number
-  relationship?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  relationship?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact?: Prisma.BoolFieldUpdateOperationsInput | boolean
   pickupAuthorized?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  primaryGuardian?: Prisma.BoolFieldUpdateOperationsInput | boolean
   receivesMailings?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesReportCards?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesAttendanceAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesDisciplineAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  livesWithStudent?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  custodyRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  educationalRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type StudentContactCreateManyContactInput = {
   id?: number
   studentId: number
-  relationship?: string | null
+  relationship: string
   emergencyContact?: boolean
   pickupAuthorized?: boolean
+  primaryGuardian?: boolean
   receivesMailings?: boolean
+  receivesReportCards?: boolean
+  receivesAttendanceAlerts?: boolean
+  receivesDisciplineAlerts?: boolean
+  livesWithStudent?: boolean
+  custodyRights?: boolean
+  educationalRights?: boolean
+  sortOrder?: number
 }
 
 export type StudentContactUpdateWithoutContactInput = {
-  relationship?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  relationship?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact?: Prisma.BoolFieldUpdateOperationsInput | boolean
   pickupAuthorized?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  primaryGuardian?: Prisma.BoolFieldUpdateOperationsInput | boolean
   receivesMailings?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesReportCards?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesAttendanceAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesDisciplineAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  livesWithStudent?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  custodyRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  educationalRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   student?: Prisma.StudentUpdateOneRequiredWithoutContactsNestedInput
 }
 
 export type StudentContactUncheckedUpdateWithoutContactInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   studentId?: Prisma.IntFieldUpdateOperationsInput | number
-  relationship?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  relationship?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact?: Prisma.BoolFieldUpdateOperationsInput | boolean
   pickupAuthorized?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  primaryGuardian?: Prisma.BoolFieldUpdateOperationsInput | boolean
   receivesMailings?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesReportCards?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesAttendanceAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesDisciplineAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  livesWithStudent?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  custodyRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  educationalRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type StudentContactUncheckedUpdateManyWithoutContactInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   studentId?: Prisma.IntFieldUpdateOperationsInput | number
-  relationship?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  relationship?: Prisma.StringFieldUpdateOperationsInput | string
   emergencyContact?: Prisma.BoolFieldUpdateOperationsInput | boolean
   pickupAuthorized?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  primaryGuardian?: Prisma.BoolFieldUpdateOperationsInput | boolean
   receivesMailings?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesReportCards?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesAttendanceAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  receivesDisciplineAlerts?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  livesWithStudent?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  custodyRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  educationalRights?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 
@@ -691,7 +977,15 @@ export type StudentContactSelect<ExtArgs extends runtime.Types.Extensions.Intern
   relationship?: boolean
   emergencyContact?: boolean
   pickupAuthorized?: boolean
+  primaryGuardian?: boolean
   receivesMailings?: boolean
+  receivesReportCards?: boolean
+  receivesAttendanceAlerts?: boolean
+  receivesDisciplineAlerts?: boolean
+  livesWithStudent?: boolean
+  custodyRights?: boolean
+  educationalRights?: boolean
+  sortOrder?: boolean
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
   contact?: boolean | Prisma.ContactDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["studentContact"]>
@@ -705,10 +999,18 @@ export type StudentContactSelectScalar = {
   relationship?: boolean
   emergencyContact?: boolean
   pickupAuthorized?: boolean
+  primaryGuardian?: boolean
   receivesMailings?: boolean
+  receivesReportCards?: boolean
+  receivesAttendanceAlerts?: boolean
+  receivesDisciplineAlerts?: boolean
+  livesWithStudent?: boolean
+  custodyRights?: boolean
+  educationalRights?: boolean
+  sortOrder?: boolean
 }
 
-export type StudentContactOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "studentId" | "contactId" | "relationship" | "emergencyContact" | "pickupAuthorized" | "receivesMailings", ExtArgs["result"]["studentContact"]>
+export type StudentContactOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "studentId" | "contactId" | "relationship" | "emergencyContact" | "pickupAuthorized" | "primaryGuardian" | "receivesMailings" | "receivesReportCards" | "receivesAttendanceAlerts" | "receivesDisciplineAlerts" | "livesWithStudent" | "custodyRights" | "educationalRights" | "sortOrder", ExtArgs["result"]["studentContact"]>
 export type StudentContactInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   student?: boolean | Prisma.StudentDefaultArgs<ExtArgs>
   contact?: boolean | Prisma.ContactDefaultArgs<ExtArgs>
@@ -724,10 +1026,18 @@ export type $StudentContactPayload<ExtArgs extends runtime.Types.Extensions.Inte
     id: number
     studentId: number
     contactId: number
-    relationship: string | null
+    relationship: string
     emergencyContact: boolean
     pickupAuthorized: boolean
+    primaryGuardian: boolean
     receivesMailings: boolean
+    receivesReportCards: boolean
+    receivesAttendanceAlerts: boolean
+    receivesDisciplineAlerts: boolean
+    livesWithStudent: boolean
+    custodyRights: boolean
+    educationalRights: boolean
+    sortOrder: number
   }, ExtArgs["result"]["studentContact"]>
   composites: {}
 }
@@ -1105,7 +1415,15 @@ export interface StudentContactFieldRefs {
   readonly relationship: Prisma.FieldRef<"StudentContact", 'String'>
   readonly emergencyContact: Prisma.FieldRef<"StudentContact", 'Boolean'>
   readonly pickupAuthorized: Prisma.FieldRef<"StudentContact", 'Boolean'>
+  readonly primaryGuardian: Prisma.FieldRef<"StudentContact", 'Boolean'>
   readonly receivesMailings: Prisma.FieldRef<"StudentContact", 'Boolean'>
+  readonly receivesReportCards: Prisma.FieldRef<"StudentContact", 'Boolean'>
+  readonly receivesAttendanceAlerts: Prisma.FieldRef<"StudentContact", 'Boolean'>
+  readonly receivesDisciplineAlerts: Prisma.FieldRef<"StudentContact", 'Boolean'>
+  readonly livesWithStudent: Prisma.FieldRef<"StudentContact", 'Boolean'>
+  readonly custodyRights: Prisma.FieldRef<"StudentContact", 'Boolean'>
+  readonly educationalRights: Prisma.FieldRef<"StudentContact", 'Boolean'>
+  readonly sortOrder: Prisma.FieldRef<"StudentContact", 'Int'>
 }
     
 

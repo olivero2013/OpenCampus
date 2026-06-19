@@ -739,7 +739,16 @@ export const ContactScalarFieldEnum = {
   lastname: 'lastname',
   preferredname: 'preferredname',
   phoneNumber: 'phoneNumber',
-  email: 'email'
+  mobileNumber: 'mobileNumber',
+  workPhone: 'workPhone',
+  email: 'email',
+  address1: 'address1',
+  address2: 'address2',
+  city: 'city',
+  state: 'state',
+  zipCode: 'zipCode',
+  employer: 'employer',
+  occupation: 'occupation'
 } as const
 
 export type ContactScalarFieldEnum = (typeof ContactScalarFieldEnum)[keyof typeof ContactScalarFieldEnum]
@@ -752,7 +761,15 @@ export const StudentContactScalarFieldEnum = {
   relationship: 'relationship',
   emergencyContact: 'emergencyContact',
   pickupAuthorized: 'pickupAuthorized',
-  receivesMailings: 'receivesMailings'
+  primaryGuardian: 'primaryGuardian',
+  receivesMailings: 'receivesMailings',
+  receivesReportCards: 'receivesReportCards',
+  receivesAttendanceAlerts: 'receivesAttendanceAlerts',
+  receivesDisciplineAlerts: 'receivesDisciplineAlerts',
+  livesWithStudent: 'livesWithStudent',
+  custodyRights: 'custodyRights',
+  educationalRights: 'educationalRights',
+  sortOrder: 'sortOrder'
 } as const
 
 export type StudentContactScalarFieldEnum = (typeof StudentContactScalarFieldEnum)[keyof typeof StudentContactScalarFieldEnum]
@@ -796,7 +813,16 @@ export const ContactOrderByRelevanceFieldEnum = {
   lastname: 'lastname',
   preferredname: 'preferredname',
   phoneNumber: 'phoneNumber',
-  email: 'email'
+  mobileNumber: 'mobileNumber',
+  workPhone: 'workPhone',
+  email: 'email',
+  address1: 'address1',
+  address2: 'address2',
+  city: 'city',
+  state: 'state',
+  zipCode: 'zipCode',
+  employer: 'employer',
+  occupation: 'occupation'
 } as const
 
 export type ContactOrderByRelevanceFieldEnum = (typeof ContactOrderByRelevanceFieldEnum)[keyof typeof ContactOrderByRelevanceFieldEnum]

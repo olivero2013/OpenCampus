@@ -20,7 +20,16 @@ export type ContactMinAggregateOutputType = {
     lastname: string | null;
     preferredname: string | null;
     phoneNumber: string | null;
+    mobileNumber: string | null;
+    workPhone: string | null;
     email: string | null;
+    address1: string | null;
+    address2: string | null;
+    city: string | null;
+    state: string | null;
+    zipCode: string | null;
+    employer: string | null;
+    occupation: string | null;
 };
 export type ContactMaxAggregateOutputType = {
     id: number | null;
@@ -28,7 +37,16 @@ export type ContactMaxAggregateOutputType = {
     lastname: string | null;
     preferredname: string | null;
     phoneNumber: string | null;
+    mobileNumber: string | null;
+    workPhone: string | null;
     email: string | null;
+    address1: string | null;
+    address2: string | null;
+    city: string | null;
+    state: string | null;
+    zipCode: string | null;
+    employer: string | null;
+    occupation: string | null;
 };
 export type ContactCountAggregateOutputType = {
     id: number;
@@ -36,7 +54,16 @@ export type ContactCountAggregateOutputType = {
     lastname: number;
     preferredname: number;
     phoneNumber: number;
+    mobileNumber: number;
+    workPhone: number;
     email: number;
+    address1: number;
+    address2: number;
+    city: number;
+    state: number;
+    zipCode: number;
+    employer: number;
+    occupation: number;
     _all: number;
 };
 export type ContactAvgAggregateInputType = {
@@ -51,7 +78,16 @@ export type ContactMinAggregateInputType = {
     lastname?: true;
     preferredname?: true;
     phoneNumber?: true;
+    mobileNumber?: true;
+    workPhone?: true;
     email?: true;
+    address1?: true;
+    address2?: true;
+    city?: true;
+    state?: true;
+    zipCode?: true;
+    employer?: true;
+    occupation?: true;
 };
 export type ContactMaxAggregateInputType = {
     id?: true;
@@ -59,7 +95,16 @@ export type ContactMaxAggregateInputType = {
     lastname?: true;
     preferredname?: true;
     phoneNumber?: true;
+    mobileNumber?: true;
+    workPhone?: true;
     email?: true;
+    address1?: true;
+    address2?: true;
+    city?: true;
+    state?: true;
+    zipCode?: true;
+    employer?: true;
+    occupation?: true;
 };
 export type ContactCountAggregateInputType = {
     id?: true;
@@ -67,7 +112,16 @@ export type ContactCountAggregateInputType = {
     lastname?: true;
     preferredname?: true;
     phoneNumber?: true;
+    mobileNumber?: true;
+    workPhone?: true;
     email?: true;
+    address1?: true;
+    address2?: true;
+    city?: true;
+    state?: true;
+    zipCode?: true;
+    employer?: true;
+    occupation?: true;
     _all?: true;
 };
 export type ContactAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -104,7 +158,16 @@ export type ContactGroupByOutputType = {
     lastname: string;
     preferredname: string | null;
     phoneNumber: string | null;
+    mobileNumber: string | null;
+    workPhone: string | null;
     email: string | null;
+    address1: string | null;
+    address2: string | null;
+    city: string | null;
+    state: string | null;
+    zipCode: string | null;
+    employer: string | null;
+    occupation: string | null;
     _count: ContactCountAggregateOutputType | null;
     _avg: ContactAvgAggregateOutputType | null;
     _sum: ContactSumAggregateOutputType | null;
@@ -123,7 +186,16 @@ export type ContactWhereInput = {
     lastname?: Prisma.StringFilter<"Contact"> | string;
     preferredname?: Prisma.StringNullableFilter<"Contact"> | string | null;
     phoneNumber?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    mobileNumber?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    workPhone?: Prisma.StringNullableFilter<"Contact"> | string | null;
     email?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    address1?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    address2?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    city?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    state?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    zipCode?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    employer?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    occupation?: Prisma.StringNullableFilter<"Contact"> | string | null;
     students?: Prisma.StudentContactListRelationFilter;
 };
 export type ContactOrderByWithRelationInput = {
@@ -132,7 +204,16 @@ export type ContactOrderByWithRelationInput = {
     lastname?: Prisma.SortOrder;
     preferredname?: Prisma.SortOrderInput | Prisma.SortOrder;
     phoneNumber?: Prisma.SortOrderInput | Prisma.SortOrder;
+    mobileNumber?: Prisma.SortOrderInput | Prisma.SortOrder;
+    workPhone?: Prisma.SortOrderInput | Prisma.SortOrder;
     email?: Prisma.SortOrderInput | Prisma.SortOrder;
+    address1?: Prisma.SortOrderInput | Prisma.SortOrder;
+    address2?: Prisma.SortOrderInput | Prisma.SortOrder;
+    city?: Prisma.SortOrderInput | Prisma.SortOrder;
+    state?: Prisma.SortOrderInput | Prisma.SortOrder;
+    zipCode?: Prisma.SortOrderInput | Prisma.SortOrder;
+    employer?: Prisma.SortOrderInput | Prisma.SortOrder;
+    occupation?: Prisma.SortOrderInput | Prisma.SortOrder;
     students?: Prisma.StudentContactOrderByRelationAggregateInput;
     _relevance?: Prisma.ContactOrderByRelevanceInput;
 };
@@ -145,7 +226,16 @@ export type ContactWhereUniqueInput = Prisma.AtLeast<{
     lastname?: Prisma.StringFilter<"Contact"> | string;
     preferredname?: Prisma.StringNullableFilter<"Contact"> | string | null;
     phoneNumber?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    mobileNumber?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    workPhone?: Prisma.StringNullableFilter<"Contact"> | string | null;
     email?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    address1?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    address2?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    city?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    state?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    zipCode?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    employer?: Prisma.StringNullableFilter<"Contact"> | string | null;
+    occupation?: Prisma.StringNullableFilter<"Contact"> | string | null;
     students?: Prisma.StudentContactListRelationFilter;
 }, "id">;
 export type ContactOrderByWithAggregationInput = {
@@ -154,7 +244,16 @@ export type ContactOrderByWithAggregationInput = {
     lastname?: Prisma.SortOrder;
     preferredname?: Prisma.SortOrderInput | Prisma.SortOrder;
     phoneNumber?: Prisma.SortOrderInput | Prisma.SortOrder;
+    mobileNumber?: Prisma.SortOrderInput | Prisma.SortOrder;
+    workPhone?: Prisma.SortOrderInput | Prisma.SortOrder;
     email?: Prisma.SortOrderInput | Prisma.SortOrder;
+    address1?: Prisma.SortOrderInput | Prisma.SortOrder;
+    address2?: Prisma.SortOrderInput | Prisma.SortOrder;
+    city?: Prisma.SortOrderInput | Prisma.SortOrder;
+    state?: Prisma.SortOrderInput | Prisma.SortOrder;
+    zipCode?: Prisma.SortOrderInput | Prisma.SortOrder;
+    employer?: Prisma.SortOrderInput | Prisma.SortOrder;
+    occupation?: Prisma.SortOrderInput | Prisma.SortOrder;
     _count?: Prisma.ContactCountOrderByAggregateInput;
     _avg?: Prisma.ContactAvgOrderByAggregateInput;
     _max?: Prisma.ContactMaxOrderByAggregateInput;
@@ -170,14 +269,32 @@ export type ContactScalarWhereWithAggregatesInput = {
     lastname?: Prisma.StringWithAggregatesFilter<"Contact"> | string;
     preferredname?: Prisma.StringNullableWithAggregatesFilter<"Contact"> | string | null;
     phoneNumber?: Prisma.StringNullableWithAggregatesFilter<"Contact"> | string | null;
+    mobileNumber?: Prisma.StringNullableWithAggregatesFilter<"Contact"> | string | null;
+    workPhone?: Prisma.StringNullableWithAggregatesFilter<"Contact"> | string | null;
     email?: Prisma.StringNullableWithAggregatesFilter<"Contact"> | string | null;
+    address1?: Prisma.StringNullableWithAggregatesFilter<"Contact"> | string | null;
+    address2?: Prisma.StringNullableWithAggregatesFilter<"Contact"> | string | null;
+    city?: Prisma.StringNullableWithAggregatesFilter<"Contact"> | string | null;
+    state?: Prisma.StringNullableWithAggregatesFilter<"Contact"> | string | null;
+    zipCode?: Prisma.StringNullableWithAggregatesFilter<"Contact"> | string | null;
+    employer?: Prisma.StringNullableWithAggregatesFilter<"Contact"> | string | null;
+    occupation?: Prisma.StringNullableWithAggregatesFilter<"Contact"> | string | null;
 };
 export type ContactCreateInput = {
     firstname: string;
     lastname: string;
     preferredname?: string | null;
     phoneNumber?: string | null;
+    mobileNumber?: string | null;
+    workPhone?: string | null;
     email?: string | null;
+    address1?: string | null;
+    address2?: string | null;
+    city?: string | null;
+    state?: string | null;
+    zipCode?: string | null;
+    employer?: string | null;
+    occupation?: string | null;
     students?: Prisma.StudentContactCreateNestedManyWithoutContactInput;
 };
 export type ContactUncheckedCreateInput = {
@@ -186,7 +303,16 @@ export type ContactUncheckedCreateInput = {
     lastname: string;
     preferredname?: string | null;
     phoneNumber?: string | null;
+    mobileNumber?: string | null;
+    workPhone?: string | null;
     email?: string | null;
+    address1?: string | null;
+    address2?: string | null;
+    city?: string | null;
+    state?: string | null;
+    zipCode?: string | null;
+    employer?: string | null;
+    occupation?: string | null;
     students?: Prisma.StudentContactUncheckedCreateNestedManyWithoutContactInput;
 };
 export type ContactUpdateInput = {
@@ -194,7 +320,16 @@ export type ContactUpdateInput = {
     lastname?: Prisma.StringFieldUpdateOperationsInput | string;
     preferredname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    mobileNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    workPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    employer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     students?: Prisma.StudentContactUpdateManyWithoutContactNestedInput;
 };
 export type ContactUncheckedUpdateInput = {
@@ -203,7 +338,16 @@ export type ContactUncheckedUpdateInput = {
     lastname?: Prisma.StringFieldUpdateOperationsInput | string;
     preferredname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    mobileNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    workPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    employer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     students?: Prisma.StudentContactUncheckedUpdateManyWithoutContactNestedInput;
 };
 export type ContactCreateManyInput = {
@@ -212,14 +356,32 @@ export type ContactCreateManyInput = {
     lastname: string;
     preferredname?: string | null;
     phoneNumber?: string | null;
+    mobileNumber?: string | null;
+    workPhone?: string | null;
     email?: string | null;
+    address1?: string | null;
+    address2?: string | null;
+    city?: string | null;
+    state?: string | null;
+    zipCode?: string | null;
+    employer?: string | null;
+    occupation?: string | null;
 };
 export type ContactUpdateManyMutationInput = {
     firstname?: Prisma.StringFieldUpdateOperationsInput | string;
     lastname?: Prisma.StringFieldUpdateOperationsInput | string;
     preferredname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    mobileNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    workPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    employer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 };
 export type ContactUncheckedUpdateManyInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
@@ -227,7 +389,16 @@ export type ContactUncheckedUpdateManyInput = {
     lastname?: Prisma.StringFieldUpdateOperationsInput | string;
     preferredname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    mobileNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    workPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    employer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 };
 export type ContactOrderByRelevanceInput = {
     fields: Prisma.ContactOrderByRelevanceFieldEnum | Prisma.ContactOrderByRelevanceFieldEnum[];
@@ -240,7 +411,16 @@ export type ContactCountOrderByAggregateInput = {
     lastname?: Prisma.SortOrder;
     preferredname?: Prisma.SortOrder;
     phoneNumber?: Prisma.SortOrder;
+    mobileNumber?: Prisma.SortOrder;
+    workPhone?: Prisma.SortOrder;
     email?: Prisma.SortOrder;
+    address1?: Prisma.SortOrder;
+    address2?: Prisma.SortOrder;
+    city?: Prisma.SortOrder;
+    state?: Prisma.SortOrder;
+    zipCode?: Prisma.SortOrder;
+    employer?: Prisma.SortOrder;
+    occupation?: Prisma.SortOrder;
 };
 export type ContactAvgOrderByAggregateInput = {
     id?: Prisma.SortOrder;
@@ -251,7 +431,16 @@ export type ContactMaxOrderByAggregateInput = {
     lastname?: Prisma.SortOrder;
     preferredname?: Prisma.SortOrder;
     phoneNumber?: Prisma.SortOrder;
+    mobileNumber?: Prisma.SortOrder;
+    workPhone?: Prisma.SortOrder;
     email?: Prisma.SortOrder;
+    address1?: Prisma.SortOrder;
+    address2?: Prisma.SortOrder;
+    city?: Prisma.SortOrder;
+    state?: Prisma.SortOrder;
+    zipCode?: Prisma.SortOrder;
+    employer?: Prisma.SortOrder;
+    occupation?: Prisma.SortOrder;
 };
 export type ContactMinOrderByAggregateInput = {
     id?: Prisma.SortOrder;
@@ -259,7 +448,16 @@ export type ContactMinOrderByAggregateInput = {
     lastname?: Prisma.SortOrder;
     preferredname?: Prisma.SortOrder;
     phoneNumber?: Prisma.SortOrder;
+    mobileNumber?: Prisma.SortOrder;
+    workPhone?: Prisma.SortOrder;
     email?: Prisma.SortOrder;
+    address1?: Prisma.SortOrder;
+    address2?: Prisma.SortOrder;
+    city?: Prisma.SortOrder;
+    state?: Prisma.SortOrder;
+    zipCode?: Prisma.SortOrder;
+    employer?: Prisma.SortOrder;
+    occupation?: Prisma.SortOrder;
 };
 export type ContactSumOrderByAggregateInput = {
     id?: Prisma.SortOrder;
@@ -285,7 +483,16 @@ export type ContactCreateWithoutStudentsInput = {
     lastname: string;
     preferredname?: string | null;
     phoneNumber?: string | null;
+    mobileNumber?: string | null;
+    workPhone?: string | null;
     email?: string | null;
+    address1?: string | null;
+    address2?: string | null;
+    city?: string | null;
+    state?: string | null;
+    zipCode?: string | null;
+    employer?: string | null;
+    occupation?: string | null;
 };
 export type ContactUncheckedCreateWithoutStudentsInput = {
     id?: number;
@@ -293,7 +500,16 @@ export type ContactUncheckedCreateWithoutStudentsInput = {
     lastname: string;
     preferredname?: string | null;
     phoneNumber?: string | null;
+    mobileNumber?: string | null;
+    workPhone?: string | null;
     email?: string | null;
+    address1?: string | null;
+    address2?: string | null;
+    city?: string | null;
+    state?: string | null;
+    zipCode?: string | null;
+    employer?: string | null;
+    occupation?: string | null;
 };
 export type ContactCreateOrConnectWithoutStudentsInput = {
     where: Prisma.ContactWhereUniqueInput;
@@ -313,7 +529,16 @@ export type ContactUpdateWithoutStudentsInput = {
     lastname?: Prisma.StringFieldUpdateOperationsInput | string;
     preferredname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    mobileNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    workPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    employer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 };
 export type ContactUncheckedUpdateWithoutStudentsInput = {
     id?: Prisma.IntFieldUpdateOperationsInput | number;
@@ -321,7 +546,16 @@ export type ContactUncheckedUpdateWithoutStudentsInput = {
     lastname?: Prisma.StringFieldUpdateOperationsInput | string;
     preferredname?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     phoneNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    mobileNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    workPhone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address1?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    address2?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    state?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    zipCode?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    employer?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
+    occupation?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
 };
 export type ContactCountOutputType = {
     students: number;
@@ -341,7 +575,16 @@ export type ContactSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     lastname?: boolean;
     preferredname?: boolean;
     phoneNumber?: boolean;
+    mobileNumber?: boolean;
+    workPhone?: boolean;
     email?: boolean;
+    address1?: boolean;
+    address2?: boolean;
+    city?: boolean;
+    state?: boolean;
+    zipCode?: boolean;
+    employer?: boolean;
+    occupation?: boolean;
     students?: boolean | Prisma.Contact$studentsArgs<ExtArgs>;
     _count?: boolean | Prisma.ContactCountOutputTypeDefaultArgs<ExtArgs>;
 }, ExtArgs["result"]["contact"]>;
@@ -351,9 +594,18 @@ export type ContactSelectScalar = {
     lastname?: boolean;
     preferredname?: boolean;
     phoneNumber?: boolean;
+    mobileNumber?: boolean;
+    workPhone?: boolean;
     email?: boolean;
+    address1?: boolean;
+    address2?: boolean;
+    city?: boolean;
+    state?: boolean;
+    zipCode?: boolean;
+    employer?: boolean;
+    occupation?: boolean;
 };
-export type ContactOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "firstname" | "lastname" | "preferredname" | "phoneNumber" | "email", ExtArgs["result"]["contact"]>;
+export type ContactOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "firstname" | "lastname" | "preferredname" | "phoneNumber" | "mobileNumber" | "workPhone" | "email" | "address1" | "address2" | "city" | "state" | "zipCode" | "employer" | "occupation", ExtArgs["result"]["contact"]>;
 export type ContactInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     students?: boolean | Prisma.Contact$studentsArgs<ExtArgs>;
     _count?: boolean | Prisma.ContactCountOutputTypeDefaultArgs<ExtArgs>;
@@ -369,7 +621,16 @@ export type $ContactPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
         lastname: string;
         preferredname: string | null;
         phoneNumber: string | null;
+        mobileNumber: string | null;
+        workPhone: string | null;
         email: string | null;
+        address1: string | null;
+        address2: string | null;
+        city: string | null;
+        state: string | null;
+        zipCode: string | null;
+        employer: string | null;
+        occupation: string | null;
     }, ExtArgs["result"]["contact"]>;
     composites: {};
 };
@@ -431,7 +692,16 @@ export interface ContactFieldRefs {
     readonly lastname: Prisma.FieldRef<"Contact", 'String'>;
     readonly preferredname: Prisma.FieldRef<"Contact", 'String'>;
     readonly phoneNumber: Prisma.FieldRef<"Contact", 'String'>;
+    readonly mobileNumber: Prisma.FieldRef<"Contact", 'String'>;
+    readonly workPhone: Prisma.FieldRef<"Contact", 'String'>;
     readonly email: Prisma.FieldRef<"Contact", 'String'>;
+    readonly address1: Prisma.FieldRef<"Contact", 'String'>;
+    readonly address2: Prisma.FieldRef<"Contact", 'String'>;
+    readonly city: Prisma.FieldRef<"Contact", 'String'>;
+    readonly state: Prisma.FieldRef<"Contact", 'String'>;
+    readonly zipCode: Prisma.FieldRef<"Contact", 'String'>;
+    readonly employer: Prisma.FieldRef<"Contact", 'String'>;
+    readonly occupation: Prisma.FieldRef<"Contact", 'String'>;
 }
 export type ContactFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     select?: Prisma.ContactSelect<ExtArgs> | null;
