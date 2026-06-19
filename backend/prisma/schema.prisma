@@ -37,26 +37,52 @@ model Contact {
   firstname       String
   lastname        String
   preferredname   String?
+
   phoneNumber     String?
+  mobileNumber    String?
+  workPhone       String?
+
   email           String?
+
+  address1        String?
+  address2        String?
+  city            String?
+  state           String?
+  zipCode         String?
+
+  employer        String?
+  occupation      String?
 
   students        StudentContact[]
 }
 
 model StudentContact {
-  id                  Int      @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-  studentId           Int
-  contactId           Int
+  studentId Int
+  contactId Int
 
-  relationship        String?
+  relationship String
 
-  emergencyContact    Boolean  @default(false)
-  pickupAuthorized    Boolean  @default(false)
-  receivesMailings    Boolean  @default(true)
+  emergencyContact Boolean @default(false)
+  pickupAuthorized Boolean @default(false)
 
-  student             Student  @relation(fields: [studentId], references: [id])
-  contact             Contact  @relation(fields: [contactId], references: [id])
+  primaryGuardian Boolean @default(false)
+
+  receivesMailings Boolean @default(true)
+  receivesReportCards Boolean @default(true)
+  receivesAttendanceAlerts Boolean @default(true)
+  receivesDisciplineAlerts Boolean @default(true)
+
+  livesWithStudent Boolean @default(false)
+
+  custodyRights Boolean @default(false)
+  educationalRights Boolean @default(false)
+
+  sortOrder Int @default(0)
+
+  student Student @relation(fields: [studentId], references: [id])
+  contact Contact @relation(fields: [contactId], references: [id])
 
   @@unique([studentId, contactId])
 }
