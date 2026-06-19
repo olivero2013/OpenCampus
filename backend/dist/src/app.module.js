@@ -15,14 +15,16 @@ const students_service_1 = require("./students/students.service");
 const students_controller_1 = require("./students/students.controller");
 const school_controller_1 = require("./school/school.controller");
 const school_service_1 = require("./school/school.service");
+const studentcontacts_service_1 = require("./studentcontacts/studentcontacts.service");
+const studentcontacts_controller_1 = require("./studentcontacts/studentcontacts.controller");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [],
-        controllers: [app_controller_1.AppController, students_controller_1.StudentsController, school_controller_1.SchoolController],
-        providers: [app_service_1.AppService, primsa_service_1.PrimsaService, students_service_1.StudentsService, school_service_1.SchoolService],
+        controllers: [app_controller_1.AppController, students_controller_1.StudentsController, school_controller_1.SchoolController, studentcontacts_controller_1.StudentcontactsController],
+        providers: [app_service_1.AppService, primsa_service_1.PrimsaService, students_service_1.StudentsService, school_service_1.SchoolService, studentcontacts_service_1.StudentcontactsService],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map
