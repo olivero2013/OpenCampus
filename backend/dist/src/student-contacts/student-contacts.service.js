@@ -23,6 +23,9 @@ let StudentContactsService = class StudentContactsService {
     findOne(id) {
         return this.primsa.contacts.findUnique({ where: { id } });
     }
+    findContactByStudent(id) {
+        return this.primsa.contacts.findMany({ where: { studentAssignment: id } });
+    }
     createContact(data) {
         return this.primsa.contacts.create({ data });
     }

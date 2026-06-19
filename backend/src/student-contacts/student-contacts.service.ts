@@ -14,6 +14,10 @@ export class StudentContactsService {
         return this.primsa.contacts.findUnique({where: {id}});
     }
 
+    findContactByStudent(id: number) {
+        return this.primsa.contacts.findMany({where: {studentAssignment: id}})
+    }
+
     createContact(data: createStudentContactDto) {
         return this.primsa.contacts.create({data})
     }

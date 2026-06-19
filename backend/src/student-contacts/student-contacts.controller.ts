@@ -16,6 +16,11 @@ export class StudentContactsController {
         return this.studentContactsService.findOne(id);
     }
 
+    @Get('/student/:id')
+    findContactsByStudent(@Param('id') id:number) {
+        return this.studentContactsService.findContactByStudent(id);
+    }
+
     @Post()
     createContact(@Body() data: createStudentContactDto) {
         return this.studentContactsService.createContact(data);

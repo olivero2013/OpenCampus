@@ -27,6 +27,9 @@ let StudentContactsController = class StudentContactsController {
     findOne(id) {
         return this.studentContactsService.findOne(id);
     }
+    findContactsByStudent(id) {
+        return this.studentContactsService.findContactByStudent(id);
+    }
     createContact(data) {
         return this.studentContactsService.createContact(data);
     }
@@ -45,6 +48,13 @@ __decorate([
     __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], StudentContactsController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Get)('/student/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", void 0)
+], StudentContactsController.prototype, "findContactsByStudent", null);
 __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),

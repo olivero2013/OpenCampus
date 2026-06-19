@@ -23,6 +23,15 @@ export declare class StudentContactsService {
     } | null, null, import("@prisma/client/runtime/client").DefaultArgs, {
         omit: import("../generated/prisma/internal/prismaNamespace").GlobalOmitConfig | undefined;
     }>;
+    findContactByStudent(id: number): import("../generated/prisma/internal/prismaNamespace").PrismaPromise<{
+        id: number;
+        firstname: string;
+        lastname: string;
+        preferredname: string | null;
+        phoneNumber: string | null;
+        email: string | null;
+        studentAssignment: number;
+    }[]>;
     createContact(data: createStudentContactDto): import("../generated/prisma/models").Prisma__contactsClient<{
         id: number;
         firstname: string;
