@@ -14,7 +14,7 @@ datasource db {
 }
 
 
-model students{
+model students {
   id Int @default(autoincrement()) @id
   firstname String
   lastname String
@@ -23,8 +23,11 @@ model students{
   dateOfBirth DateTime
   gender String
   enrollment Boolean
+
   schoolAssignment Int
   school School @relation(fields: [schoolAssignment], references: [id])
+
+  contacts contacts[]
 }
 
 model School {
@@ -32,4 +35,17 @@ model School {
   name     String
 
   students students[]
+}
+
+model contacts {
+  id Int @id @default(autoincrement())
+
+  firstname String
+  lastname String
+  preferredname String?
+  phoneNumber String?
+  email String?
+
+  studentAssignment Int
+  student students @relation(fields: [studentAssignment], references: [id])
 }
