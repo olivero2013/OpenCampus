@@ -23,7 +23,7 @@ export class StudentContactsController {
     }
 
     @Get('/student/:id')
-    findContactsByStudent(@Param('id') id:number) {
+    findContactsByStudent(@Param('id', ParseIntPipe) id:number) {
         return this.studentContactsService.findContactByStudent(id);
     }
 
