@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrimsaService } from 'src/prisma/primsa.service';
-import { createStudentContactDto } from './dto/createStudentContact.dto';
+import { CreateStudentContactDto } from './dto/createStudentContact.dto';
+import { CreateStudentRelationDto } from './dto/createStudentRelation.dto';
 
 @Injectable()
 export class StudentContactsService {
@@ -15,10 +16,14 @@ export class StudentContactsService {
     }
 
     findContactByStudent(id: number) {
-        return this.primsa.studentContact.findMany({where: {studentId: id}, include: {contact: true}})
+        return this.primsa.studentContact.findMany({where: {studentId: id}, include: {contact: true}});
     }
 
-    createContact(data: createStudentContactDto) {
-        return this.primsa.contact.create({data})
+    createContact(data: CreateStudentContactDto) {
+        return this.primsa.contact.create({data});
+    }
+
+    createRelation(data: CreateStudentRelationDto) {
+        return this.primsa.studentContact.create({data});
     }
 }

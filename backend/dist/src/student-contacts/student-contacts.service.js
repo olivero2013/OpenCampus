@@ -29,6 +29,9 @@ let StudentContactsService = class StudentContactsService {
     createContact(data) {
         return this.primsa.contact.create({ data });
     }
+    createRelation(data) {
+        return this.primsa.studentContact.create({ data });
+    }
 };
 exports.StudentContactsService = StudentContactsService;
 exports.StudentContactsService = StudentContactsService = __decorate([

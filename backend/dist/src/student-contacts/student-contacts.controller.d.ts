@@ -1,14 +1,15 @@
 import { StudentContactsService } from './student-contacts.service';
-import { createStudentContactDto } from './dto/createStudentContact.dto';
+import { CreateStudentContactDto } from './dto/createStudentContact.dto';
+import { CreateStudentRelationDto } from './dto/createStudentRelation.dto';
 export declare class StudentContactsController {
     private studentContactsService;
     constructor(studentContactsService: StudentContactsService);
     findAll(): import("../generated/prisma/internal/prismaNamespace").PrismaPromise<({
         contact: {
-            id: number;
             firstname: string;
             lastname: string;
             preferredname: string | null;
+            id: number;
             phoneNumber: string | null;
             email: string | null;
         };
@@ -23,10 +24,10 @@ export declare class StudentContactsController {
     })[]>;
     findOne(id: number): import("../generated/prisma/models").Prisma__StudentContactClient<({
         contact: {
-            id: number;
             firstname: string;
             lastname: string;
             preferredname: string | null;
+            id: number;
             phoneNumber: string | null;
             email: string | null;
         };
@@ -43,10 +44,10 @@ export declare class StudentContactsController {
     }>;
     findContactsByStudent(id: number): import("../generated/prisma/internal/prismaNamespace").PrismaPromise<({
         contact: {
-            id: number;
             firstname: string;
             lastname: string;
             preferredname: string | null;
+            id: number;
             phoneNumber: string | null;
             email: string | null;
         };
@@ -59,13 +60,24 @@ export declare class StudentContactsController {
         pickupAuthorized: boolean;
         receivesMailings: boolean;
     })[]>;
-    createContact(data: createStudentContactDto): import("../generated/prisma/models").Prisma__ContactClient<{
-        id: number;
+    createContact(data: CreateStudentContactDto): import("../generated/prisma/models").Prisma__ContactClient<{
         firstname: string;
         lastname: string;
         preferredname: string | null;
+        id: number;
         phoneNumber: string | null;
         email: string | null;
+    }, never, import("@prisma/client/runtime/client").DefaultArgs, {
+        omit: import("../generated/prisma/internal/prismaNamespace").GlobalOmitConfig | undefined;
+    }>;
+    createRelationship(data: CreateStudentRelationDto): import("../generated/prisma/models").Prisma__StudentContactClient<{
+        id: number;
+        studentId: number;
+        contactId: number;
+        relationship: string | null;
+        emergencyContact: boolean;
+        pickupAuthorized: boolean;
+        receivesMailings: boolean;
     }, never, import("@prisma/client/runtime/client").DefaultArgs, {
         omit: import("../generated/prisma/internal/prismaNamespace").GlobalOmitConfig | undefined;
     }>;

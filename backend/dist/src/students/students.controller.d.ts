@@ -5,7 +5,6 @@ export declare class StudentsController {
     private studentsService;
     constructor(studentsService: StudentsService);
     findAll(): Promise<{
-        id: number;
         firstname: string;
         lastname: string;
         preferredname: string | null;
@@ -14,9 +13,9 @@ export declare class StudentsController {
         gender: string;
         enrollment: boolean;
         schoolId: number;
+        id: number;
     }[]>;
     findOne(id: number): Promise<{
-        id: number;
         firstname: string;
         lastname: string;
         preferredname: string | null;
@@ -25,9 +24,9 @@ export declare class StudentsController {
         gender: string;
         enrollment: boolean;
         schoolId: number;
+        id: number;
     }>;
     createOne(data: createStudentDto): Promise<{
-        id: number;
         firstname: string;
         lastname: string;
         preferredname: string | null;
@@ -36,9 +35,9 @@ export declare class StudentsController {
         gender: string;
         enrollment: boolean;
         schoolId: number;
+        id: number;
     }>;
     deleteOne(id: number): Promise<{
-        id: number;
         firstname: string;
         lastname: string;
         preferredname: string | null;
@@ -47,9 +46,9 @@ export declare class StudentsController {
         gender: string;
         enrollment: boolean;
         schoolId: number;
+        id: number;
     }>;
     putOne(data: updateStudentDto, id: number): Promise<{
-        id: number;
         firstname: string;
         lastname: string;
         preferredname: string | null;
@@ -58,5 +57,6 @@ export declare class StudentsController {
         gender: string;
         enrollment: boolean;
         schoolId: number;
+        id: number;
     }>;
 }

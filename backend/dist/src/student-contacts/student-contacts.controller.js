@@ -16,6 +16,7 @@ exports.StudentContactsController = void 0;
 const common_1 = require("@nestjs/common");
 const student_contacts_service_1 = require("./student-contacts.service");
 const createStudentContact_dto_1 = require("./dto/createStudentContact.dto");
+const createStudentRelation_dto_1 = require("./dto/createStudentRelation.dto");
 let StudentContactsController = class StudentContactsController {
     studentContactsService;
     constructor(studentContactsService) {
@@ -32,6 +33,9 @@ let StudentContactsController = class StudentContactsController {
     }
     createContact(data) {
         return this.studentContactsService.createContact(data);
+    }
+    createRelationship(data) {
+        return this.studentContactsService.createRelation(data);
     }
 };
 exports.StudentContactsController = StudentContactsController;
@@ -56,12 +60,19 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], StudentContactsController.prototype, "findContactsByStudent", null);
 __decorate([
-    (0, common_1.Post)(),
+    (0, common_1.Post)('/contact'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [createStudentContact_dto_1.createStudentContactDto]),
+    __metadata("design:paramtypes", [createStudentContact_dto_1.CreateStudentContactDto]),
     __metadata("design:returntype", void 0)
 ], StudentContactsController.prototype, "createContact", null);
+__decorate([
+    (0, common_1.Post)('/realationship'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [createStudentRelation_dto_1.CreateStudentRelationDto]),
+    __metadata("design:returntype", void 0)
+], StudentContactsController.prototype, "createRelationship", null);
 exports.StudentContactsController = StudentContactsController = __decorate([
     (0, common_1.Controller)('student-contacts'),
     __metadata("design:paramtypes", [student_contacts_service_1.StudentContactsService])

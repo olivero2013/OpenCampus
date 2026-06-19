@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { StudentContactsService } from './student-contacts.service';
-import { createStudentContactDto } from './dto/createStudentContact.dto';
+import { CreateStudentContactDto } from './dto/createStudentContact.dto';
+import { CreateStudentRelationDto } from './dto/createStudentRelation.dto';
 
 @Controller('student-contacts')
 export class StudentContactsController {
@@ -21,8 +22,13 @@ export class StudentContactsController {
         return this.studentContactsService.findContactByStudent(id);
     }
 
-    @Post()
-    createContact(@Body() data: createStudentContactDto) {
+    @Post('/contact')
+    createContact(@Body() data: CreateStudentContactDto) {
         return this.studentContactsService.createContact(data);
+    }
+
+    @Post('/realationship')
+    createRelationship(@Body() data: CreateStudentRelationDto) {
+        return this.studentContactsService.createRelation(data);
     }
 }
