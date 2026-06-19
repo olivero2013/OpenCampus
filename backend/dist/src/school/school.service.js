@@ -20,6 +20,9 @@ let SchoolService = class SchoolService {
     async findAll() {
         return this.prisma.school.findMany();
     }
+    async findOne(id) {
+        return this.prisma.school.findUniqueOrThrow({ where: { id } });
+    }
     async findAllStudentsInSchool(schoolID) {
         return this.prisma.students.findMany({ where: { schoolAssignment: schoolID } });
     }

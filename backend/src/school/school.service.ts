@@ -11,6 +11,10 @@ export class SchoolService {
         return this.prisma.school.findMany();
     }
 
+    async findOne(id:number) {
+        return this.prisma.school.findUniqueOrThrow({where:{id}})
+    }
+
     async findAllStudentsInSchool(schoolID) {
         return this.prisma.students.findMany({where: {schoolAssignment:schoolID}});
     }

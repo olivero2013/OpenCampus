@@ -8,7 +8,12 @@ export declare class SchoolController {
         id: number;
         name: string;
     }[]>;
+    findOne(id: number): Promise<{
+        id: number;
+        name: string;
+    }>;
     findAllStudentInSchool(id: string): Promise<{
+        id: number;
         firstname: string;
         lastname: string;
         preferredname: string | null;
@@ -17,7 +22,6 @@ export declare class SchoolController {
         gender: string;
         enrollment: boolean;
         schoolAssignment: number;
-        id: number;
     }[]>;
     createSchool(CreateSchoolDto: createSchoolDto): Promise<{
         id: number;
