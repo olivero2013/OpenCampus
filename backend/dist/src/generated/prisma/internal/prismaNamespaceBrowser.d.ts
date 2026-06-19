@@ -13,6 +13,7 @@ export declare const AnyNull: import("@prisma/client-runtime-utils").AnyNullClas
 export declare const ModelName: {
     readonly students: "students";
     readonly School: "School";
+    readonly contacts: "contacts";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export declare const TransactionIsolationLevel: {
@@ -39,6 +40,16 @@ export declare const SchoolScalarFieldEnum: {
     readonly name: "name";
 };
 export type SchoolScalarFieldEnum = (typeof SchoolScalarFieldEnum)[keyof typeof SchoolScalarFieldEnum];
+export declare const ContactsScalarFieldEnum: {
+    readonly id: "id";
+    readonly firstname: "firstname";
+    readonly lastname: "lastname";
+    readonly preferredname: "preferredname";
+    readonly phoneNumber: "phoneNumber";
+    readonly email: "email";
+    readonly studentAssignment: "studentAssignment";
+};
+export type ContactsScalarFieldEnum = (typeof ContactsScalarFieldEnum)[keyof typeof ContactsScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";
@@ -60,3 +71,11 @@ export declare const SchoolOrderByRelevanceFieldEnum: {
     readonly name: "name";
 };
 export type SchoolOrderByRelevanceFieldEnum = (typeof SchoolOrderByRelevanceFieldEnum)[keyof typeof SchoolOrderByRelevanceFieldEnum];
+export declare const contactsOrderByRelevanceFieldEnum: {
+    readonly firstname: "firstname";
+    readonly lastname: "lastname";
+    readonly preferredname: "preferredname";
+    readonly phoneNumber: "phoneNumber";
+    readonly email: "email";
+};
+export type contactsOrderByRelevanceFieldEnum = (typeof contactsOrderByRelevanceFieldEnum)[keyof typeof contactsOrderByRelevanceFieldEnum];

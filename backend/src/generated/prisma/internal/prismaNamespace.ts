@@ -385,7 +385,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   students: 'students',
-  School: 'School'
+  School: 'School',
+  contacts: 'contacts'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -401,7 +402,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "students" | "school"
+    modelProps: "students" | "school" | "contacts"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -537,6 +538,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    contacts: {
+      payload: Prisma.$contactsPayload<ExtArgs>
+      fields: Prisma.contactsFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.contactsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.contactsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>
+        }
+        findFirst: {
+          args: Prisma.contactsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.contactsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>
+        }
+        findMany: {
+          args: Prisma.contactsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>[]
+        }
+        create: {
+          args: Prisma.contactsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>
+        }
+        createMany: {
+          args: Prisma.contactsCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.contactsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>
+        }
+        update: {
+          args: Prisma.contactsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>
+        }
+        deleteMany: {
+          args: Prisma.contactsDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.contactsUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.contactsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>
+        }
+        aggregate: {
+          args: Prisma.ContactsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateContacts>
+        }
+        groupBy: {
+          args: Prisma.contactsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ContactsGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.contactsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ContactsCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -599,6 +666,19 @@ export const SchoolScalarFieldEnum = {
 export type SchoolScalarFieldEnum = (typeof SchoolScalarFieldEnum)[keyof typeof SchoolScalarFieldEnum]
 
 
+export const ContactsScalarFieldEnum = {
+  id: 'id',
+  firstname: 'firstname',
+  lastname: 'lastname',
+  preferredname: 'preferredname',
+  phoneNumber: 'phoneNumber',
+  email: 'email',
+  studentAssignment: 'studentAssignment'
+} as const
+
+export type ContactsScalarFieldEnum = (typeof ContactsScalarFieldEnum)[keyof typeof ContactsScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -630,6 +710,17 @@ export const SchoolOrderByRelevanceFieldEnum = {
 } as const
 
 export type SchoolOrderByRelevanceFieldEnum = (typeof SchoolOrderByRelevanceFieldEnum)[keyof typeof SchoolOrderByRelevanceFieldEnum]
+
+
+export const contactsOrderByRelevanceFieldEnum = {
+  firstname: 'firstname',
+  lastname: 'lastname',
+  preferredname: 'preferredname',
+  phoneNumber: 'phoneNumber',
+  email: 'email'
+} as const
+
+export type contactsOrderByRelevanceFieldEnum = (typeof contactsOrderByRelevanceFieldEnum)[keyof typeof contactsOrderByRelevanceFieldEnum]
 
 
 
@@ -784,6 +875,7 @@ export type PrismaClientOptions = ({
 export type GlobalOmitConfig = {
   students?: Prisma.studentsOmit
   school?: Prisma.SchoolOmit
+  contacts?: Prisma.contactsOmit
 }
 
 /* Types for Logging */

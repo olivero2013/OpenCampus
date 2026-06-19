@@ -33,7 +33,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.defineExtension = exports.SchoolOrderByRelevanceFieldEnum = exports.studentsOrderByRelevanceFieldEnum = exports.NullsOrder = exports.SortOrder = exports.SchoolScalarFieldEnum = exports.StudentsScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
+exports.defineExtension = exports.contactsOrderByRelevanceFieldEnum = exports.SchoolOrderByRelevanceFieldEnum = exports.studentsOrderByRelevanceFieldEnum = exports.NullsOrder = exports.SortOrder = exports.ContactsScalarFieldEnum = exports.SchoolScalarFieldEnum = exports.StudentsScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
 const runtime = __importStar(require("@prisma/client/runtime/client"));
 exports.PrismaClientKnownRequestError = runtime.PrismaClientKnownRequestError;
 exports.PrismaClientUnknownRequestError = runtime.PrismaClientUnknownRequestError;
@@ -61,7 +61,8 @@ exports.JsonNull = runtime.JsonNull;
 exports.AnyNull = runtime.AnyNull;
 exports.ModelName = {
     students: 'students',
-    School: 'School'
+    School: 'School',
+    contacts: 'contacts'
 };
 exports.TransactionIsolationLevel = runtime.makeStrictEnum({
     ReadUncommitted: 'ReadUncommitted',
@@ -84,6 +85,15 @@ exports.SchoolScalarFieldEnum = {
     id: 'id',
     name: 'name'
 };
+exports.ContactsScalarFieldEnum = {
+    id: 'id',
+    firstname: 'firstname',
+    lastname: 'lastname',
+    preferredname: 'preferredname',
+    phoneNumber: 'phoneNumber',
+    email: 'email',
+    studentAssignment: 'studentAssignment'
+};
 exports.SortOrder = {
     asc: 'asc',
     desc: 'desc'
@@ -100,6 +110,13 @@ exports.studentsOrderByRelevanceFieldEnum = {
 };
 exports.SchoolOrderByRelevanceFieldEnum = {
     name: 'name'
+};
+exports.contactsOrderByRelevanceFieldEnum = {
+    firstname: 'firstname',
+    lastname: 'lastname',
+    preferredname: 'preferredname',
+    phoneNumber: 'phoneNumber',
+    email: 'email'
 };
 exports.defineExtension = runtime.Extensions.defineExtension;
 //# sourceMappingURL=prismaNamespace.js.map

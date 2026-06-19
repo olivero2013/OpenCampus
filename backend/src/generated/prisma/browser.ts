@@ -27,3 +27,8 @@ export type students = Prisma.studentsModel
  * 
  */
 export type School = Prisma.SchoolModel
+/**
+ * Model contacts
+ * 
+ */
+export type contacts = Prisma.contactsModel

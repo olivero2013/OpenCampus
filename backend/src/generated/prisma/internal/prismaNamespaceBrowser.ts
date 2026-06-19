@@ -52,7 +52,8 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   students: 'students',
-  School: 'School'
+  School: 'School',
+  contacts: 'contacts'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -94,6 +95,19 @@ export const SchoolScalarFieldEnum = {
 export type SchoolScalarFieldEnum = (typeof SchoolScalarFieldEnum)[keyof typeof SchoolScalarFieldEnum]
 
 
+export const ContactsScalarFieldEnum = {
+  id: 'id',
+  firstname: 'firstname',
+  lastname: 'lastname',
+  preferredname: 'preferredname',
+  phoneNumber: 'phoneNumber',
+  email: 'email',
+  studentAssignment: 'studentAssignment'
+} as const
+
+export type ContactsScalarFieldEnum = (typeof ContactsScalarFieldEnum)[keyof typeof ContactsScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -125,4 +139,15 @@ export const SchoolOrderByRelevanceFieldEnum = {
 } as const
 
 export type SchoolOrderByRelevanceFieldEnum = (typeof SchoolOrderByRelevanceFieldEnum)[keyof typeof SchoolOrderByRelevanceFieldEnum]
+
+
+export const contactsOrderByRelevanceFieldEnum = {
+  firstname: 'firstname',
+  lastname: 'lastname',
+  preferredname: 'preferredname',
+  phoneNumber: 'phoneNumber',
+  email: 'email'
+} as const
+
+export type contactsOrderByRelevanceFieldEnum = (typeof contactsOrderByRelevanceFieldEnum)[keyof typeof contactsOrderByRelevanceFieldEnum]
 

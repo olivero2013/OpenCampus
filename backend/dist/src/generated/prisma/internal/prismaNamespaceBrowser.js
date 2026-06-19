@@ -33,7 +33,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SchoolOrderByRelevanceFieldEnum = exports.studentsOrderByRelevanceFieldEnum = exports.NullsOrder = exports.SortOrder = exports.SchoolScalarFieldEnum = exports.StudentsScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
+exports.contactsOrderByRelevanceFieldEnum = exports.SchoolOrderByRelevanceFieldEnum = exports.studentsOrderByRelevanceFieldEnum = exports.NullsOrder = exports.SortOrder = exports.ContactsScalarFieldEnum = exports.SchoolScalarFieldEnum = exports.StudentsScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.Decimal = void 0;
 const runtime = __importStar(require("@prisma/client/runtime/index-browser"));
 exports.Decimal = runtime.Decimal;
 exports.NullTypes = {
@@ -46,7 +46,8 @@ exports.JsonNull = runtime.JsonNull;
 exports.AnyNull = runtime.AnyNull;
 exports.ModelName = {
     students: 'students',
-    School: 'School'
+    School: 'School',
+    contacts: 'contacts'
 };
 exports.TransactionIsolationLevel = runtime.makeStrictEnum({
     ReadUncommitted: 'ReadUncommitted',
@@ -69,6 +70,15 @@ exports.SchoolScalarFieldEnum = {
     id: 'id',
     name: 'name'
 };
+exports.ContactsScalarFieldEnum = {
+    id: 'id',
+    firstname: 'firstname',
+    lastname: 'lastname',
+    preferredname: 'preferredname',
+    phoneNumber: 'phoneNumber',
+    email: 'email',
+    studentAssignment: 'studentAssignment'
+};
 exports.SortOrder = {
     asc: 'asc',
     desc: 'desc'
@@ -85,5 +95,12 @@ exports.studentsOrderByRelevanceFieldEnum = {
 };
 exports.SchoolOrderByRelevanceFieldEnum = {
     name: 'name'
+};
+exports.contactsOrderByRelevanceFieldEnum = {
+    firstname: 'firstname',
+    lastname: 'lastname',
+    preferredname: 'preferredname',
+    phoneNumber: 'phoneNumber',
+    email: 'email'
 };
 //# sourceMappingURL=prismaNamespaceBrowser.js.map

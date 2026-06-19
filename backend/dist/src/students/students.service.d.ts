@@ -5,6 +5,7 @@ export declare class StudentsService {
     private prisma;
     constructor(prisma: PrimsaService);
     findAll(): Promise<{
+        id: number;
         firstname: string;
         lastname: string;
         preferredname: string | null;
@@ -13,9 +14,9 @@ export declare class StudentsService {
         gender: string;
         enrollment: boolean;
         schoolAssignment: number;
-        id: number;
     }[]>;
     findOne(id: number): Promise<{
+        id: number;
         firstname: string;
         lastname: string;
         preferredname: string | null;
@@ -24,9 +25,9 @@ export declare class StudentsService {
         gender: string;
         enrollment: boolean;
         schoolAssignment: number;
-        id: number;
     }>;
     createOne(data: createStudentDto): Promise<{
+        id: number;
         firstname: string;
         lastname: string;
         preferredname: string | null;
@@ -35,9 +36,9 @@ export declare class StudentsService {
         gender: string;
         enrollment: boolean;
         schoolAssignment: number;
-        id: number;
     }>;
     deleteOne(id: number): Promise<{
+        id: number;
         firstname: string;
         lastname: string;
         preferredname: string | null;
@@ -46,9 +47,9 @@ export declare class StudentsService {
         gender: string;
         enrollment: boolean;
         schoolAssignment: number;
-        id: number;
     }>;
     changeOne(id: number, data: updateStudentDto): Promise<{
+        id: number;
         firstname: string;
         lastname: string;
         preferredname: string | null;
@@ -57,6 +58,5 @@ export declare class StudentsService {
         gender: string;
         enrollment: boolean;
         schoolAssignment: number;
-        id: number;
     }>;
 }

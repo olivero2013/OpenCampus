@@ -4,3 +4,4 @@ export * as $Enums from './enums.js';
 export * from './enums.js';
 export type students = Prisma.studentsModel;
 export type School = Prisma.SchoolModel;
+export type contacts = Prisma.contactsModel;

@@ -159,6 +159,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export declare const ModelName: {
     readonly students: "students";
     readonly School: "School";
+    readonly contacts: "contacts";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export interface TypeMapCb<GlobalOmitOptions = {}> extends runtime.Types.Utils.Fn<{
@@ -171,7 +172,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         omit: GlobalOmitOptions;
     };
     meta: {
-        modelProps: "students" | "school";
+        modelProps: "students" | "school" | "contacts";
         txIsolationLevel: TransactionIsolationLevel;
     };
     model: {
@@ -307,6 +308,72 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
                 };
             };
         };
+        contacts: {
+            payload: Prisma.$contactsPayload<ExtArgs>;
+            fields: Prisma.contactsFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.contactsFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.contactsFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>;
+                };
+                findFirst: {
+                    args: Prisma.contactsFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.contactsFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>;
+                };
+                findMany: {
+                    args: Prisma.contactsFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>[];
+                };
+                create: {
+                    args: Prisma.contactsCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>;
+                };
+                createMany: {
+                    args: Prisma.contactsCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                delete: {
+                    args: Prisma.contactsDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>;
+                };
+                update: {
+                    args: Prisma.contactsUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.contactsDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.contactsUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                upsert: {
+                    args: Prisma.contactsUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>;
+                };
+                aggregate: {
+                    args: Prisma.ContactsAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateContacts>;
+                };
+                groupBy: {
+                    args: Prisma.contactsGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.ContactsGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.contactsCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.ContactsCountAggregateOutputType> | number;
+                };
+            };
+        };
     };
 } & {
     other: {
@@ -355,6 +422,16 @@ export declare const SchoolScalarFieldEnum: {
     readonly name: "name";
 };
 export type SchoolScalarFieldEnum = (typeof SchoolScalarFieldEnum)[keyof typeof SchoolScalarFieldEnum];
+export declare const ContactsScalarFieldEnum: {
+    readonly id: "id";
+    readonly firstname: "firstname";
+    readonly lastname: "lastname";
+    readonly preferredname: "preferredname";
+    readonly phoneNumber: "phoneNumber";
+    readonly email: "email";
+    readonly studentAssignment: "studentAssignment";
+};
+export type ContactsScalarFieldEnum = (typeof ContactsScalarFieldEnum)[keyof typeof ContactsScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";
@@ -376,6 +453,14 @@ export declare const SchoolOrderByRelevanceFieldEnum: {
     readonly name: "name";
 };
 export type SchoolOrderByRelevanceFieldEnum = (typeof SchoolOrderByRelevanceFieldEnum)[keyof typeof SchoolOrderByRelevanceFieldEnum];
+export declare const contactsOrderByRelevanceFieldEnum: {
+    readonly firstname: "firstname";
+    readonly lastname: "lastname";
+    readonly preferredname: "preferredname";
+    readonly phoneNumber: "phoneNumber";
+    readonly email: "email";
+};
+export type contactsOrderByRelevanceFieldEnum = (typeof contactsOrderByRelevanceFieldEnum)[keyof typeof contactsOrderByRelevanceFieldEnum];
 export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>;
 export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>;
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>;
@@ -408,6 +493,7 @@ export type PrismaClientOptions = ({
 export type GlobalOmitConfig = {
     students?: Prisma.studentsOmit;
     school?: Prisma.SchoolOmit;
+    contacts?: Prisma.contactsOmit;
 };
 export type LogLevel = 'info' | 'query' | 'warn' | 'error';
 export type LogDefinition = {

@@ -8,3 +8,4 @@ export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts exten
 export { Prisma };
 export type students = Prisma.studentsModel;
 export type School = Prisma.SchoolModel;
+export type contacts = Prisma.contactsModel;
