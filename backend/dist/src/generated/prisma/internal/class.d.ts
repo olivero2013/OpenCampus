@@ -30,13 +30,16 @@ export interface PrismaClient<in LogOpts extends Prisma.LogLevel = never, in out
     $extends: runtime.Types.Extensions.ExtendsHook<"extends", Prisma.TypeMapCb<OmitOpts>, ExtArgs, runtime.Types.Utils.Call<Prisma.TypeMapCb<OmitOpts>, {
         extArgs: ExtArgs;
     }>>;
-    get students(): Prisma.studentsDelegate<ExtArgs, {
+    get student(): Prisma.StudentDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
     get school(): Prisma.SchoolDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
-    get contacts(): Prisma.contactsDelegate<ExtArgs, {
+    get contact(): Prisma.ContactDelegate<ExtArgs, {
+        omit: OmitOpts;
+    }>;
+    get studentContact(): Prisma.StudentContactDelegate<ExtArgs, {
         omit: OmitOpts;
     }>;
 }

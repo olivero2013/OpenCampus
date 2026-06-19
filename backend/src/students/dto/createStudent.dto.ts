@@ -34,5 +34,5 @@ export class createStudentDto {
   enrollment!: boolean;
 
   @IsNumber()
-  schoolAssignment!: number;
+  schoolId!: number;
 }

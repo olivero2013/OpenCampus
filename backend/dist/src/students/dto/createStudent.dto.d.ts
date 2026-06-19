@@ -6,5 +6,5 @@ export declare class createStudentDto {
     dateOfBirth: Date;
     gender: string;
     enrollment: boolean;
-    schoolAssignment: number;
+    schoolId: number;
 }

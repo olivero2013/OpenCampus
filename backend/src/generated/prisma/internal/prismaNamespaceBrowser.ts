@@ -51,9 +51,10 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  students: 'students',
+  Student: 'Student',
   School: 'School',
-  contacts: 'contacts'
+  Contact: 'Contact',
+  StudentContact: 'StudentContact'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -72,7 +73,7 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const StudentsScalarFieldEnum = {
+export const StudentScalarFieldEnum = {
   id: 'id',
   firstname: 'firstname',
   lastname: 'lastname',
@@ -81,10 +82,10 @@ export const StudentsScalarFieldEnum = {
   dateOfBirth: 'dateOfBirth',
   gender: 'gender',
   enrollment: 'enrollment',
-  schoolAssignment: 'schoolAssignment'
+  schoolId: 'schoolId'
 } as const
 
-export type StudentsScalarFieldEnum = (typeof StudentsScalarFieldEnum)[keyof typeof StudentsScalarFieldEnum]
+export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeof StudentScalarFieldEnum]
 
 
 export const SchoolScalarFieldEnum = {
@@ -95,17 +96,29 @@ export const SchoolScalarFieldEnum = {
 export type SchoolScalarFieldEnum = (typeof SchoolScalarFieldEnum)[keyof typeof SchoolScalarFieldEnum]
 
 
-export const ContactsScalarFieldEnum = {
+export const ContactScalarFieldEnum = {
   id: 'id',
   firstname: 'firstname',
   lastname: 'lastname',
   preferredname: 'preferredname',
   phoneNumber: 'phoneNumber',
-  email: 'email',
-  studentAssignment: 'studentAssignment'
+  email: 'email'
 } as const
 
-export type ContactsScalarFieldEnum = (typeof ContactsScalarFieldEnum)[keyof typeof ContactsScalarFieldEnum]
+export type ContactScalarFieldEnum = (typeof ContactScalarFieldEnum)[keyof typeof ContactScalarFieldEnum]
+
+
+export const StudentContactScalarFieldEnum = {
+  id: 'id',
+  studentId: 'studentId',
+  contactId: 'contactId',
+  relationship: 'relationship',
+  emergencyContact: 'emergencyContact',
+  pickupAuthorized: 'pickupAuthorized',
+  receivesMailings: 'receivesMailings'
+} as const
+
+export type StudentContactScalarFieldEnum = (typeof StudentContactScalarFieldEnum)[keyof typeof StudentContactScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -124,14 +137,14 @@ export const NullsOrder = {
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
-export const studentsOrderByRelevanceFieldEnum = {
+export const StudentOrderByRelevanceFieldEnum = {
   firstname: 'firstname',
   lastname: 'lastname',
   preferredname: 'preferredname',
   gender: 'gender'
 } as const
 
-export type studentsOrderByRelevanceFieldEnum = (typeof studentsOrderByRelevanceFieldEnum)[keyof typeof studentsOrderByRelevanceFieldEnum]
+export type StudentOrderByRelevanceFieldEnum = (typeof StudentOrderByRelevanceFieldEnum)[keyof typeof StudentOrderByRelevanceFieldEnum]
 
 
 export const SchoolOrderByRelevanceFieldEnum = {
@@ -141,7 +154,7 @@ export const SchoolOrderByRelevanceFieldEnum = {
 export type SchoolOrderByRelevanceFieldEnum = (typeof SchoolOrderByRelevanceFieldEnum)[keyof typeof SchoolOrderByRelevanceFieldEnum]
 
 
-export const contactsOrderByRelevanceFieldEnum = {
+export const ContactOrderByRelevanceFieldEnum = {
   firstname: 'firstname',
   lastname: 'lastname',
   preferredname: 'preferredname',
@@ -149,5 +162,12 @@ export const contactsOrderByRelevanceFieldEnum = {
   email: 'email'
 } as const
 
-export type contactsOrderByRelevanceFieldEnum = (typeof contactsOrderByRelevanceFieldEnum)[keyof typeof contactsOrderByRelevanceFieldEnum]
+export type ContactOrderByRelevanceFieldEnum = (typeof ContactOrderByRelevanceFieldEnum)[keyof typeof ContactOrderByRelevanceFieldEnum]
+
+
+export const StudentContactOrderByRelevanceFieldEnum = {
+  relationship: 'relationship'
+} as const
+
+export type StudentContactOrderByRelevanceFieldEnum = (typeof StudentContactOrderByRelevanceFieldEnum)[keyof typeof StudentContactOrderByRelevanceFieldEnum]
 

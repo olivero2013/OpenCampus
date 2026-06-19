@@ -192,13 +192,13 @@ export type SchoolWhereInput = {
   NOT?: Prisma.SchoolWhereInput | Prisma.SchoolWhereInput[]
   id?: Prisma.IntFilter<"School"> | number
   name?: Prisma.StringFilter<"School"> | string
-  students?: Prisma.StudentsListRelationFilter
+  students?: Prisma.StudentListRelationFilter
 }
 
 export type SchoolOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  students?: Prisma.studentsOrderByRelationAggregateInput
+  students?: Prisma.StudentOrderByRelationAggregateInput
   _relevance?: Prisma.SchoolOrderByRelevanceInput
 }
 
@@ -208,7 +208,7 @@ export type SchoolWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.SchoolWhereInput[]
   NOT?: Prisma.SchoolWhereInput | Prisma.SchoolWhereInput[]
   name?: Prisma.StringFilter<"School"> | string
-  students?: Prisma.StudentsListRelationFilter
+  students?: Prisma.StudentListRelationFilter
 }, "id">
 
 export type SchoolOrderByWithAggregationInput = {
@@ -231,24 +231,24 @@ export type SchoolScalarWhereWithAggregatesInput = {
 
 export type SchoolCreateInput = {
   name: string
-  students?: Prisma.studentsCreateNestedManyWithoutSchoolInput
+  students?: Prisma.StudentCreateNestedManyWithoutSchoolInput
 }
 
 export type SchoolUncheckedCreateInput = {
   id?: number
   name: string
-  students?: Prisma.studentsUncheckedCreateNestedManyWithoutSchoolInput
+  students?: Prisma.StudentUncheckedCreateNestedManyWithoutSchoolInput
 }
 
 export type SchoolUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  students?: Prisma.studentsUpdateManyWithoutSchoolNestedInput
+  students?: Prisma.StudentUpdateManyWithoutSchoolNestedInput
 }
 
 export type SchoolUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  students?: Prisma.studentsUncheckedUpdateManyWithoutSchoolNestedInput
+  students?: Prisma.StudentUncheckedUpdateManyWithoutSchoolNestedInput
 }
 
 export type SchoolCreateManyInput = {
@@ -374,7 +374,7 @@ export type SchoolCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exten
  * SchoolCountOutputType without action
  */
 export type SchoolCountOutputTypeCountStudentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.studentsWhereInput
+  where?: Prisma.StudentWhereInput
 }
 
 
@@ -401,7 +401,7 @@ export type SchoolInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs 
 export type $SchoolPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "School"
   objects: {
-    students: Prisma.$studentsPayload<ExtArgs>[]
+    students: Prisma.$StudentPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -746,7 +746,7 @@ readonly fields: SchoolFieldRefs;
  */
 export interface Prisma__SchoolClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  students<T extends Prisma.School$studentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.School$studentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$studentsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  students<T extends Prisma.School$studentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.School$studentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StudentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1130,23 +1130,23 @@ export type SchoolDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
  */
 export type School$studentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the students
+   * Select specific fields to fetch from the Student
    */
-  select?: Prisma.studentsSelect<ExtArgs> | null
+  select?: Prisma.StudentSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the students
+   * Omit specific fields from the Student
    */
-  omit?: Prisma.studentsOmit<ExtArgs> | null
+  omit?: Prisma.StudentOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.studentsInclude<ExtArgs> | null
-  where?: Prisma.studentsWhereInput
-  orderBy?: Prisma.studentsOrderByWithRelationInput | Prisma.studentsOrderByWithRelationInput[]
-  cursor?: Prisma.studentsWhereUniqueInput
+  include?: Prisma.StudentInclude<ExtArgs> | null
+  where?: Prisma.StudentWhereInput
+  orderBy?: Prisma.StudentOrderByWithRelationInput | Prisma.StudentOrderByWithRelationInput[]
+  cursor?: Prisma.StudentWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.StudentsScalarFieldEnum | Prisma.StudentsScalarFieldEnum[]
+  distinct?: Prisma.StudentScalarFieldEnum | Prisma.StudentScalarFieldEnum[]
 }
 
 /**

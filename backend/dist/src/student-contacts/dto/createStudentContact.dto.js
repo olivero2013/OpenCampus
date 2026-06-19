@@ -7,7 +7,6 @@ class createStudentContactDto {
     preferredname;
     phoneNumber;
     email;
-    studentAssignment;
 }
 exports.createStudentContactDto = createStudentContactDto;
 //# sourceMappingURL=createStudentContact.dto.js.map

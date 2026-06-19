@@ -24,7 +24,7 @@ let SchoolService = class SchoolService {
         return this.prisma.school.findUniqueOrThrow({ where: { id } });
     }
     async findAllStudentsInSchool(schoolID) {
-        return this.prisma.students.findMany({ where: { schoolAssignment: schoolID } });
+        return this.prisma.student.findMany({ where: { schoolId: schoolID } });
     }
     async createSchool(data) {
         return this.prisma.school.create({ data });

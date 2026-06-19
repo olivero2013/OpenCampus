@@ -11,9 +11,10 @@ export declare const DbNull: import("@prisma/client-runtime-utils").DbNullClass;
 export declare const JsonNull: import("@prisma/client-runtime-utils").JsonNullClass;
 export declare const AnyNull: import("@prisma/client-runtime-utils").AnyNullClass;
 export declare const ModelName: {
-    readonly students: "students";
+    readonly Student: "Student";
     readonly School: "School";
-    readonly contacts: "contacts";
+    readonly Contact: "Contact";
+    readonly StudentContact: "StudentContact";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export declare const TransactionIsolationLevel: {
@@ -23,7 +24,7 @@ export declare const TransactionIsolationLevel: {
     readonly Serializable: "Serializable";
 };
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel];
-export declare const StudentsScalarFieldEnum: {
+export declare const StudentScalarFieldEnum: {
     readonly id: "id";
     readonly firstname: "firstname";
     readonly lastname: "lastname";
@@ -32,24 +33,33 @@ export declare const StudentsScalarFieldEnum: {
     readonly dateOfBirth: "dateOfBirth";
     readonly gender: "gender";
     readonly enrollment: "enrollment";
-    readonly schoolAssignment: "schoolAssignment";
+    readonly schoolId: "schoolId";
 };
-export type StudentsScalarFieldEnum = (typeof StudentsScalarFieldEnum)[keyof typeof StudentsScalarFieldEnum];
+export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeof StudentScalarFieldEnum];
 export declare const SchoolScalarFieldEnum: {
     readonly id: "id";
     readonly name: "name";
 };
 export type SchoolScalarFieldEnum = (typeof SchoolScalarFieldEnum)[keyof typeof SchoolScalarFieldEnum];
-export declare const ContactsScalarFieldEnum: {
+export declare const ContactScalarFieldEnum: {
     readonly id: "id";
     readonly firstname: "firstname";
     readonly lastname: "lastname";
     readonly preferredname: "preferredname";
     readonly phoneNumber: "phoneNumber";
     readonly email: "email";
-    readonly studentAssignment: "studentAssignment";
 };
-export type ContactsScalarFieldEnum = (typeof ContactsScalarFieldEnum)[keyof typeof ContactsScalarFieldEnum];
+export type ContactScalarFieldEnum = (typeof ContactScalarFieldEnum)[keyof typeof ContactScalarFieldEnum];
+export declare const StudentContactScalarFieldEnum: {
+    readonly id: "id";
+    readonly studentId: "studentId";
+    readonly contactId: "contactId";
+    readonly relationship: "relationship";
+    readonly emergencyContact: "emergencyContact";
+    readonly pickupAuthorized: "pickupAuthorized";
+    readonly receivesMailings: "receivesMailings";
+};
+export type StudentContactScalarFieldEnum = (typeof StudentContactScalarFieldEnum)[keyof typeof StudentContactScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";
@@ -60,22 +70,26 @@ export declare const NullsOrder: {
     readonly last: "last";
 };
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder];
-export declare const studentsOrderByRelevanceFieldEnum: {
+export declare const StudentOrderByRelevanceFieldEnum: {
     readonly firstname: "firstname";
     readonly lastname: "lastname";
     readonly preferredname: "preferredname";
     readonly gender: "gender";
 };
-export type studentsOrderByRelevanceFieldEnum = (typeof studentsOrderByRelevanceFieldEnum)[keyof typeof studentsOrderByRelevanceFieldEnum];
+export type StudentOrderByRelevanceFieldEnum = (typeof StudentOrderByRelevanceFieldEnum)[keyof typeof StudentOrderByRelevanceFieldEnum];
 export declare const SchoolOrderByRelevanceFieldEnum: {
     readonly name: "name";
 };
 export type SchoolOrderByRelevanceFieldEnum = (typeof SchoolOrderByRelevanceFieldEnum)[keyof typeof SchoolOrderByRelevanceFieldEnum];
-export declare const contactsOrderByRelevanceFieldEnum: {
+export declare const ContactOrderByRelevanceFieldEnum: {
     readonly firstname: "firstname";
     readonly lastname: "lastname";
     readonly preferredname: "preferredname";
     readonly phoneNumber: "phoneNumber";
     readonly email: "email";
 };
-export type contactsOrderByRelevanceFieldEnum = (typeof contactsOrderByRelevanceFieldEnum)[keyof typeof contactsOrderByRelevanceFieldEnum];
+export type ContactOrderByRelevanceFieldEnum = (typeof ContactOrderByRelevanceFieldEnum)[keyof typeof ContactOrderByRelevanceFieldEnum];
+export declare const StudentContactOrderByRelevanceFieldEnum: {
+    readonly relationship: "relationship";
+};
+export type StudentContactOrderByRelevanceFieldEnum = (typeof StudentContactOrderByRelevanceFieldEnum)[keyof typeof StudentContactOrderByRelevanceFieldEnum];

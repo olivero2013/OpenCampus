@@ -18,16 +18,16 @@ let StudentContactsService = class StudentContactsService {
         this.primsa = primsa;
     }
     findAll() {
-        return this.primsa.contacts.findMany();
+        return this.primsa.studentContact.findMany({ include: { contact: true } });
     }
     findOne(id) {
-        return this.primsa.contacts.findUnique({ where: { id } });
+        return this.primsa.studentContact.findUnique({ where: { id }, include: { contact: true } });
     }
     findContactByStudent(id) {
-        return this.primsa.contacts.findMany({ where: { studentAssignment: id } });
+        return this.primsa.studentContact.findMany({ where: { studentId: id }, include: { contact: true } });
     }
     createContact(data) {
-        return this.primsa.contacts.create({ data });
+        return this.primsa.contact.create({ data });
     }
 };
 exports.StudentContactsService = StudentContactsService;

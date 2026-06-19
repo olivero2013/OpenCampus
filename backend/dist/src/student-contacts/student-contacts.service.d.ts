@@ -3,43 +3,69 @@ import { createStudentContactDto } from './dto/createStudentContact.dto';
 export declare class StudentContactsService {
     private primsa;
     constructor(primsa: PrimsaService);
-    findAll(): import("../generated/prisma/internal/prismaNamespace").PrismaPromise<{
+    findAll(): import("../generated/prisma/internal/prismaNamespace").PrismaPromise<({
+        contact: {
+            id: number;
+            firstname: string;
+            lastname: string;
+            preferredname: string | null;
+            phoneNumber: string | null;
+            email: string | null;
+        };
+    } & {
         id: number;
-        firstname: string;
-        lastname: string;
-        preferredname: string | null;
-        phoneNumber: string | null;
-        email: string | null;
-        studentAssignment: number;
-    }[]>;
-    findOne(id: number): import("../generated/prisma/models").Prisma__contactsClient<{
+        studentId: number;
+        contactId: number;
+        relationship: string | null;
+        emergencyContact: boolean;
+        pickupAuthorized: boolean;
+        receivesMailings: boolean;
+    })[]>;
+    findOne(id: number): import("../generated/prisma/models").Prisma__StudentContactClient<({
+        contact: {
+            id: number;
+            firstname: string;
+            lastname: string;
+            preferredname: string | null;
+            phoneNumber: string | null;
+            email: string | null;
+        };
+    } & {
         id: number;
-        firstname: string;
-        lastname: string;
-        preferredname: string | null;
-        phoneNumber: string | null;
-        email: string | null;
-        studentAssignment: number;
-    } | null, null, import("@prisma/client/runtime/client").DefaultArgs, {
+        studentId: number;
+        contactId: number;
+        relationship: string | null;
+        emergencyContact: boolean;
+        pickupAuthorized: boolean;
+        receivesMailings: boolean;
+    }) | null, null, import("@prisma/client/runtime/client").DefaultArgs, {
         omit: import("../generated/prisma/internal/prismaNamespace").GlobalOmitConfig | undefined;
     }>;
-    findContactByStudent(id: number): import("../generated/prisma/internal/prismaNamespace").PrismaPromise<{
+    findContactByStudent(id: number): import("../generated/prisma/internal/prismaNamespace").PrismaPromise<({
+        contact: {
+            id: number;
+            firstname: string;
+            lastname: string;
+            preferredname: string | null;
+            phoneNumber: string | null;
+            email: string | null;
+        };
+    } & {
+        id: number;
+        studentId: number;
+        contactId: number;
+        relationship: string | null;
+        emergencyContact: boolean;
+        pickupAuthorized: boolean;
+        receivesMailings: boolean;
+    })[]>;
+    createContact(data: createStudentContactDto): import("../generated/prisma/models").Prisma__ContactClient<{
         id: number;
         firstname: string;
         lastname: string;
         preferredname: string | null;
         phoneNumber: string | null;
         email: string | null;
-        studentAssignment: number;
-    }[]>;
-    createContact(data: createStudentContactDto): import("../generated/prisma/models").Prisma__contactsClient<{
-        id: number;
-        firstname: string;
-        lastname: string;
-        preferredname: string | null;
-        phoneNumber: string | null;
-        email: string | null;
-        studentAssignment: number;
     }, never, import("@prisma/client/runtime/client").DefaultArgs, {
         omit: import("../generated/prisma/internal/prismaNamespace").GlobalOmitConfig | undefined;
     }>;

@@ -20,7 +20,7 @@ class createStudentDto {
     dateOfBirth;
     gender;
     enrollment;
-    schoolAssignment;
+    schoolId;
 }
 exports.createStudentDto = createStudentDto;
 __decorate([
@@ -56,5 +56,5 @@ __decorate([
 __decorate([
     (0, class_validator_1.IsNumber)(),
     __metadata("design:type", Number)
-], createStudentDto.prototype, "schoolAssignment", void 0);
+], createStudentDto.prototype, "schoolId", void 0);
 //# sourceMappingURL=createStudent.dto.js.map

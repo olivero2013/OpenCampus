@@ -13,7 +13,7 @@ export declare class StudentsService {
         dateOfBirth: Date;
         gender: string;
         enrollment: boolean;
-        schoolAssignment: number;
+        schoolId: number;
     }[]>;
     findOne(id: number): Promise<{
         id: number;
@@ -24,7 +24,7 @@ export declare class StudentsService {
         dateOfBirth: Date;
         gender: string;
         enrollment: boolean;
-        schoolAssignment: number;
+        schoolId: number;
     }>;
     createOne(data: createStudentDto): Promise<{
         id: number;
@@ -35,7 +35,7 @@ export declare class StudentsService {
         dateOfBirth: Date;
         gender: string;
         enrollment: boolean;
-        schoolAssignment: number;
+        schoolId: number;
     }>;
     deleteOne(id: number): Promise<{
         id: number;
@@ -46,7 +46,7 @@ export declare class StudentsService {
         dateOfBirth: Date;
         gender: string;
         enrollment: boolean;
-        schoolAssignment: number;
+        schoolId: number;
     }>;
     changeOne(id: number, data: updateStudentDto): Promise<{
         id: number;
@@ -57,6 +57,6 @@ export declare class StudentsService {
         dateOfBirth: Date;
         gender: string;
         enrollment: boolean;
-        schoolAssignment: number;
+        schoolId: number;
     }>;
 }

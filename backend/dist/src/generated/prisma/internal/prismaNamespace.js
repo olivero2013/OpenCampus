@@ -33,7 +33,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.defineExtension = exports.contactsOrderByRelevanceFieldEnum = exports.SchoolOrderByRelevanceFieldEnum = exports.studentsOrderByRelevanceFieldEnum = exports.NullsOrder = exports.SortOrder = exports.ContactsScalarFieldEnum = exports.SchoolScalarFieldEnum = exports.StudentsScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
+exports.defineExtension = exports.StudentContactOrderByRelevanceFieldEnum = exports.ContactOrderByRelevanceFieldEnum = exports.SchoolOrderByRelevanceFieldEnum = exports.StudentOrderByRelevanceFieldEnum = exports.NullsOrder = exports.SortOrder = exports.StudentContactScalarFieldEnum = exports.ContactScalarFieldEnum = exports.SchoolScalarFieldEnum = exports.StudentScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
 const runtime = __importStar(require("@prisma/client/runtime/client"));
 exports.PrismaClientKnownRequestError = runtime.PrismaClientKnownRequestError;
 exports.PrismaClientUnknownRequestError = runtime.PrismaClientUnknownRequestError;
@@ -60,9 +60,10 @@ exports.DbNull = runtime.DbNull;
 exports.JsonNull = runtime.JsonNull;
 exports.AnyNull = runtime.AnyNull;
 exports.ModelName = {
-    students: 'students',
+    Student: 'Student',
     School: 'School',
-    contacts: 'contacts'
+    Contact: 'Contact',
+    StudentContact: 'StudentContact'
 };
 exports.TransactionIsolationLevel = runtime.makeStrictEnum({
     ReadUncommitted: 'ReadUncommitted',
@@ -70,7 +71,7 @@ exports.TransactionIsolationLevel = runtime.makeStrictEnum({
     RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
 });
-exports.StudentsScalarFieldEnum = {
+exports.StudentScalarFieldEnum = {
     id: 'id',
     firstname: 'firstname',
     lastname: 'lastname',
@@ -79,20 +80,28 @@ exports.StudentsScalarFieldEnum = {
     dateOfBirth: 'dateOfBirth',
     gender: 'gender',
     enrollment: 'enrollment',
-    schoolAssignment: 'schoolAssignment'
+    schoolId: 'schoolId'
 };
 exports.SchoolScalarFieldEnum = {
     id: 'id',
     name: 'name'
 };
-exports.ContactsScalarFieldEnum = {
+exports.ContactScalarFieldEnum = {
     id: 'id',
     firstname: 'firstname',
     lastname: 'lastname',
     preferredname: 'preferredname',
     phoneNumber: 'phoneNumber',
-    email: 'email',
-    studentAssignment: 'studentAssignment'
+    email: 'email'
+};
+exports.StudentContactScalarFieldEnum = {
+    id: 'id',
+    studentId: 'studentId',
+    contactId: 'contactId',
+    relationship: 'relationship',
+    emergencyContact: 'emergencyContact',
+    pickupAuthorized: 'pickupAuthorized',
+    receivesMailings: 'receivesMailings'
 };
 exports.SortOrder = {
     asc: 'asc',
@@ -102,7 +111,7 @@ exports.NullsOrder = {
     first: 'first',
     last: 'last'
 };
-exports.studentsOrderByRelevanceFieldEnum = {
+exports.StudentOrderByRelevanceFieldEnum = {
     firstname: 'firstname',
     lastname: 'lastname',
     preferredname: 'preferredname',
@@ -111,12 +120,15 @@ exports.studentsOrderByRelevanceFieldEnum = {
 exports.SchoolOrderByRelevanceFieldEnum = {
     name: 'name'
 };
-exports.contactsOrderByRelevanceFieldEnum = {
+exports.ContactOrderByRelevanceFieldEnum = {
     firstname: 'firstname',
     lastname: 'lastname',
     preferredname: 'preferredname',
     phoneNumber: 'phoneNumber',
     email: 'email'
+};
+exports.StudentContactOrderByRelevanceFieldEnum = {
+    relationship: 'relationship'
 };
 exports.defineExtension = runtime.Extensions.defineExtension;
 //# sourceMappingURL=prismaNamespace.js.map

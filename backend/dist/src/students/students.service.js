@@ -18,19 +18,19 @@ let StudentsService = class StudentsService {
         this.prisma = prisma;
     }
     async findAll() {
-        return this.prisma.students.findMany();
+        return this.prisma.student.findMany();
     }
     async findOne(id) {
-        return this.prisma.students.findUniqueOrThrow({ where: { id } });
+        return this.prisma.student.findUniqueOrThrow({ where: { id } });
     }
     async createOne(data) {
-        return this.prisma.students.create({ data });
+        return this.prisma.student.create({ data });
     }
     async deleteOne(id) {
-        return this.prisma.students.delete({ where: { id } });
+        return this.prisma.student.delete({ where: { id } });
     }
     async changeOne(id, data) {
-        return this.prisma.students.update({
+        return this.prisma.student.update({
             where: { id },
             data
         });

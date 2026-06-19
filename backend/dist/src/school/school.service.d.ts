@@ -21,7 +21,7 @@ export declare class SchoolService {
         dateOfBirth: Date;
         gender: string;
         enrollment: boolean;
-        schoolAssignment: number;
+        schoolId: number;
     }[]>;
     createSchool(data: createSchoolDto): Promise<{
         id: number;

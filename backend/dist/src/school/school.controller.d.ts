@@ -21,7 +21,7 @@ export declare class SchoolController {
         dateOfBirth: Date;
         gender: string;
         enrollment: boolean;
-        schoolAssignment: number;
+        schoolId: number;
     }[]>;
     createSchool(CreateSchoolDto: createSchoolDto): Promise<{
         id: number;

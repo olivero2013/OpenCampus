@@ -157,9 +157,10 @@ export type ExcludeUnderscoreKeys<T extends string> = T extends `_${string}` ? n
 export type FieldRef<Model, FieldType> = runtime.FieldRef<Model, FieldType>;
 type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRef<Model, FieldType>;
 export declare const ModelName: {
-    readonly students: "students";
+    readonly Student: "Student";
     readonly School: "School";
-    readonly contacts: "contacts";
+    readonly Contact: "Contact";
+    readonly StudentContact: "StudentContact";
 };
 export type ModelName = (typeof ModelName)[keyof typeof ModelName];
 export interface TypeMapCb<GlobalOmitOptions = {}> extends runtime.Types.Utils.Fn<{
@@ -172,73 +173,73 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         omit: GlobalOmitOptions;
     };
     meta: {
-        modelProps: "students" | "school" | "contacts";
+        modelProps: "student" | "school" | "contact" | "studentContact";
         txIsolationLevel: TransactionIsolationLevel;
     };
     model: {
-        students: {
-            payload: Prisma.$studentsPayload<ExtArgs>;
-            fields: Prisma.studentsFieldRefs;
+        Student: {
+            payload: Prisma.$StudentPayload<ExtArgs>;
+            fields: Prisma.StudentFieldRefs;
             operations: {
                 findUnique: {
-                    args: Prisma.studentsFindUniqueArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$studentsPayload> | null;
+                    args: Prisma.StudentFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload> | null;
                 };
                 findUniqueOrThrow: {
-                    args: Prisma.studentsFindUniqueOrThrowArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$studentsPayload>;
+                    args: Prisma.StudentFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload>;
                 };
                 findFirst: {
-                    args: Prisma.studentsFindFirstArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$studentsPayload> | null;
+                    args: Prisma.StudentFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload> | null;
                 };
                 findFirstOrThrow: {
-                    args: Prisma.studentsFindFirstOrThrowArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$studentsPayload>;
+                    args: Prisma.StudentFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload>;
                 };
                 findMany: {
-                    args: Prisma.studentsFindManyArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$studentsPayload>[];
+                    args: Prisma.StudentFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload>[];
                 };
                 create: {
-                    args: Prisma.studentsCreateArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$studentsPayload>;
+                    args: Prisma.StudentCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload>;
                 };
                 createMany: {
-                    args: Prisma.studentsCreateManyArgs<ExtArgs>;
+                    args: Prisma.StudentCreateManyArgs<ExtArgs>;
                     result: BatchPayload;
                 };
                 delete: {
-                    args: Prisma.studentsDeleteArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$studentsPayload>;
+                    args: Prisma.StudentDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload>;
                 };
                 update: {
-                    args: Prisma.studentsUpdateArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$studentsPayload>;
+                    args: Prisma.StudentUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload>;
                 };
                 deleteMany: {
-                    args: Prisma.studentsDeleteManyArgs<ExtArgs>;
+                    args: Prisma.StudentDeleteManyArgs<ExtArgs>;
                     result: BatchPayload;
                 };
                 updateMany: {
-                    args: Prisma.studentsUpdateManyArgs<ExtArgs>;
+                    args: Prisma.StudentUpdateManyArgs<ExtArgs>;
                     result: BatchPayload;
                 };
                 upsert: {
-                    args: Prisma.studentsUpsertArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$studentsPayload>;
+                    args: Prisma.StudentUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentPayload>;
                 };
                 aggregate: {
-                    args: Prisma.StudentsAggregateArgs<ExtArgs>;
-                    result: runtime.Types.Utils.Optional<Prisma.AggregateStudents>;
+                    args: Prisma.StudentAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateStudent>;
                 };
                 groupBy: {
-                    args: Prisma.studentsGroupByArgs<ExtArgs>;
-                    result: runtime.Types.Utils.Optional<Prisma.StudentsGroupByOutputType>[];
+                    args: Prisma.StudentGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.StudentGroupByOutputType>[];
                 };
                 count: {
-                    args: Prisma.studentsCountArgs<ExtArgs>;
-                    result: runtime.Types.Utils.Optional<Prisma.StudentsCountAggregateOutputType> | number;
+                    args: Prisma.StudentCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.StudentCountAggregateOutputType> | number;
                 };
             };
         };
@@ -308,69 +309,135 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
                 };
             };
         };
-        contacts: {
-            payload: Prisma.$contactsPayload<ExtArgs>;
-            fields: Prisma.contactsFieldRefs;
+        Contact: {
+            payload: Prisma.$ContactPayload<ExtArgs>;
+            fields: Prisma.ContactFieldRefs;
             operations: {
                 findUnique: {
-                    args: Prisma.contactsFindUniqueArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload> | null;
+                    args: Prisma.ContactFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactPayload> | null;
                 };
                 findUniqueOrThrow: {
-                    args: Prisma.contactsFindUniqueOrThrowArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>;
+                    args: Prisma.ContactFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactPayload>;
                 };
                 findFirst: {
-                    args: Prisma.contactsFindFirstArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload> | null;
+                    args: Prisma.ContactFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactPayload> | null;
                 };
                 findFirstOrThrow: {
-                    args: Prisma.contactsFindFirstOrThrowArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>;
+                    args: Prisma.ContactFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactPayload>;
                 };
                 findMany: {
-                    args: Prisma.contactsFindManyArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>[];
+                    args: Prisma.ContactFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactPayload>[];
                 };
                 create: {
-                    args: Prisma.contactsCreateArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>;
+                    args: Prisma.ContactCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactPayload>;
                 };
                 createMany: {
-                    args: Prisma.contactsCreateManyArgs<ExtArgs>;
+                    args: Prisma.ContactCreateManyArgs<ExtArgs>;
                     result: BatchPayload;
                 };
                 delete: {
-                    args: Prisma.contactsDeleteArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>;
+                    args: Prisma.ContactDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactPayload>;
                 };
                 update: {
-                    args: Prisma.contactsUpdateArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>;
+                    args: Prisma.ContactUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactPayload>;
                 };
                 deleteMany: {
-                    args: Prisma.contactsDeleteManyArgs<ExtArgs>;
+                    args: Prisma.ContactDeleteManyArgs<ExtArgs>;
                     result: BatchPayload;
                 };
                 updateMany: {
-                    args: Prisma.contactsUpdateManyArgs<ExtArgs>;
+                    args: Prisma.ContactUpdateManyArgs<ExtArgs>;
                     result: BatchPayload;
                 };
                 upsert: {
-                    args: Prisma.contactsUpsertArgs<ExtArgs>;
-                    result: runtime.Types.Utils.PayloadToResult<Prisma.$contactsPayload>;
+                    args: Prisma.ContactUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$ContactPayload>;
                 };
                 aggregate: {
-                    args: Prisma.ContactsAggregateArgs<ExtArgs>;
-                    result: runtime.Types.Utils.Optional<Prisma.AggregateContacts>;
+                    args: Prisma.ContactAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateContact>;
                 };
                 groupBy: {
-                    args: Prisma.contactsGroupByArgs<ExtArgs>;
-                    result: runtime.Types.Utils.Optional<Prisma.ContactsGroupByOutputType>[];
+                    args: Prisma.ContactGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.ContactGroupByOutputType>[];
                 };
                 count: {
-                    args: Prisma.contactsCountArgs<ExtArgs>;
-                    result: runtime.Types.Utils.Optional<Prisma.ContactsCountAggregateOutputType> | number;
+                    args: Prisma.ContactCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.ContactCountAggregateOutputType> | number;
+                };
+            };
+        };
+        StudentContact: {
+            payload: Prisma.$StudentContactPayload<ExtArgs>;
+            fields: Prisma.StudentContactFieldRefs;
+            operations: {
+                findUnique: {
+                    args: Prisma.StudentContactFindUniqueArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentContactPayload> | null;
+                };
+                findUniqueOrThrow: {
+                    args: Prisma.StudentContactFindUniqueOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentContactPayload>;
+                };
+                findFirst: {
+                    args: Prisma.StudentContactFindFirstArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentContactPayload> | null;
+                };
+                findFirstOrThrow: {
+                    args: Prisma.StudentContactFindFirstOrThrowArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentContactPayload>;
+                };
+                findMany: {
+                    args: Prisma.StudentContactFindManyArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentContactPayload>[];
+                };
+                create: {
+                    args: Prisma.StudentContactCreateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentContactPayload>;
+                };
+                createMany: {
+                    args: Prisma.StudentContactCreateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                delete: {
+                    args: Prisma.StudentContactDeleteArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentContactPayload>;
+                };
+                update: {
+                    args: Prisma.StudentContactUpdateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentContactPayload>;
+                };
+                deleteMany: {
+                    args: Prisma.StudentContactDeleteManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                updateMany: {
+                    args: Prisma.StudentContactUpdateManyArgs<ExtArgs>;
+                    result: BatchPayload;
+                };
+                upsert: {
+                    args: Prisma.StudentContactUpsertArgs<ExtArgs>;
+                    result: runtime.Types.Utils.PayloadToResult<Prisma.$StudentContactPayload>;
+                };
+                aggregate: {
+                    args: Prisma.StudentContactAggregateArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.AggregateStudentContact>;
+                };
+                groupBy: {
+                    args: Prisma.StudentContactGroupByArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.StudentContactGroupByOutputType>[];
+                };
+                count: {
+                    args: Prisma.StudentContactCountArgs<ExtArgs>;
+                    result: runtime.Types.Utils.Optional<Prisma.StudentContactCountAggregateOutputType> | number;
                 };
             };
         };
@@ -405,7 +472,7 @@ export declare const TransactionIsolationLevel: {
     readonly Serializable: "Serializable";
 };
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel];
-export declare const StudentsScalarFieldEnum: {
+export declare const StudentScalarFieldEnum: {
     readonly id: "id";
     readonly firstname: "firstname";
     readonly lastname: "lastname";
@@ -414,24 +481,33 @@ export declare const StudentsScalarFieldEnum: {
     readonly dateOfBirth: "dateOfBirth";
     readonly gender: "gender";
     readonly enrollment: "enrollment";
-    readonly schoolAssignment: "schoolAssignment";
+    readonly schoolId: "schoolId";
 };
-export type StudentsScalarFieldEnum = (typeof StudentsScalarFieldEnum)[keyof typeof StudentsScalarFieldEnum];
+export type StudentScalarFieldEnum = (typeof StudentScalarFieldEnum)[keyof typeof StudentScalarFieldEnum];
 export declare const SchoolScalarFieldEnum: {
     readonly id: "id";
     readonly name: "name";
 };
 export type SchoolScalarFieldEnum = (typeof SchoolScalarFieldEnum)[keyof typeof SchoolScalarFieldEnum];
-export declare const ContactsScalarFieldEnum: {
+export declare const ContactScalarFieldEnum: {
     readonly id: "id";
     readonly firstname: "firstname";
     readonly lastname: "lastname";
     readonly preferredname: "preferredname";
     readonly phoneNumber: "phoneNumber";
     readonly email: "email";
-    readonly studentAssignment: "studentAssignment";
 };
-export type ContactsScalarFieldEnum = (typeof ContactsScalarFieldEnum)[keyof typeof ContactsScalarFieldEnum];
+export type ContactScalarFieldEnum = (typeof ContactScalarFieldEnum)[keyof typeof ContactScalarFieldEnum];
+export declare const StudentContactScalarFieldEnum: {
+    readonly id: "id";
+    readonly studentId: "studentId";
+    readonly contactId: "contactId";
+    readonly relationship: "relationship";
+    readonly emergencyContact: "emergencyContact";
+    readonly pickupAuthorized: "pickupAuthorized";
+    readonly receivesMailings: "receivesMailings";
+};
+export type StudentContactScalarFieldEnum = (typeof StudentContactScalarFieldEnum)[keyof typeof StudentContactScalarFieldEnum];
 export declare const SortOrder: {
     readonly asc: "asc";
     readonly desc: "desc";
@@ -442,25 +518,29 @@ export declare const NullsOrder: {
     readonly last: "last";
 };
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder];
-export declare const studentsOrderByRelevanceFieldEnum: {
+export declare const StudentOrderByRelevanceFieldEnum: {
     readonly firstname: "firstname";
     readonly lastname: "lastname";
     readonly preferredname: "preferredname";
     readonly gender: "gender";
 };
-export type studentsOrderByRelevanceFieldEnum = (typeof studentsOrderByRelevanceFieldEnum)[keyof typeof studentsOrderByRelevanceFieldEnum];
+export type StudentOrderByRelevanceFieldEnum = (typeof StudentOrderByRelevanceFieldEnum)[keyof typeof StudentOrderByRelevanceFieldEnum];
 export declare const SchoolOrderByRelevanceFieldEnum: {
     readonly name: "name";
 };
 export type SchoolOrderByRelevanceFieldEnum = (typeof SchoolOrderByRelevanceFieldEnum)[keyof typeof SchoolOrderByRelevanceFieldEnum];
-export declare const contactsOrderByRelevanceFieldEnum: {
+export declare const ContactOrderByRelevanceFieldEnum: {
     readonly firstname: "firstname";
     readonly lastname: "lastname";
     readonly preferredname: "preferredname";
     readonly phoneNumber: "phoneNumber";
     readonly email: "email";
 };
-export type contactsOrderByRelevanceFieldEnum = (typeof contactsOrderByRelevanceFieldEnum)[keyof typeof contactsOrderByRelevanceFieldEnum];
+export type ContactOrderByRelevanceFieldEnum = (typeof ContactOrderByRelevanceFieldEnum)[keyof typeof ContactOrderByRelevanceFieldEnum];
+export declare const StudentContactOrderByRelevanceFieldEnum: {
+    readonly relationship: "relationship";
+};
+export type StudentContactOrderByRelevanceFieldEnum = (typeof StudentContactOrderByRelevanceFieldEnum)[keyof typeof StudentContactOrderByRelevanceFieldEnum];
 export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>;
 export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>;
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>;
@@ -491,9 +571,10 @@ export type PrismaClientOptions = ({
     queryPlanCacheMaxSize?: number;
 };
 export type GlobalOmitConfig = {
-    students?: Prisma.studentsOmit;
+    student?: Prisma.StudentOmit;
     school?: Prisma.SchoolOmit;
-    contacts?: Prisma.contactsOmit;
+    contact?: Prisma.ContactOmit;
+    studentContact?: Prisma.StudentContactOmit;
 };
 export type LogLevel = 'info' | 'query' | 'warn' | 'error';
 export type LogDefinition = {

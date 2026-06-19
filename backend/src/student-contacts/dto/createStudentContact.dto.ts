@@ -4,6 +4,4 @@ export class createStudentContactDto {
     preferredname?: string;
     phoneNumber?: string;
     email?: string;
-
-    studentAssignment!: number;
 }
