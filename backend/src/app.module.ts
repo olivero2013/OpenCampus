@@ -11,9 +11,10 @@ import { StudentContactsService } from './student-contacts/student-contacts.serv
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { AuthorizationModule } from './authorization/authorization.module';
+import { AuditModule } from './audit/audit.module';
 
 @Module({
-  imports: [AuthModule, UsersModule, AuthorizationModule],
+  imports: [AuthModule, UsersModule, AuthorizationModule, AuditModule],
   controllers: [AppController, StudentsController, SchoolController, StudentContactsController],
   providers: [AppService, PrimsaService, StudentsService, SchoolService, StudentContactsService],
 })

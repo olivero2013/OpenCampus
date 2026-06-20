@@ -10,7 +10,7 @@ It provides a flexible backend foundation for managing students, staff, relation
 
 ### 🔐 Authentication & Authorization
 - Secure login system with token-based auth
-- Role-based access control (RBAC)
+- Organizational hierarchy access control (ABAC, kinda)
 - Fine-grained permission system with deny/allow precedence
 
 ### 🏫 Student Information System Core

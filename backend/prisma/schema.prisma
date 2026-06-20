@@ -129,3 +129,35 @@ model PermissionGrant {
   @@index([userId])
   @@index([action])
 }
+
+model AuditLog {
+  id          Int         @id @default(autoincrement())
+  userId      Int?
+  action      AuditAction
+  status      AuditStatus
+  resultCode  Int?
+  entityType  String?
+  entityId    String?
+  route       String
+  method      String
+  ipAddress   String?
+  userAgent   String?
+  description String?
+  metadata    Json?
+  createdAt   DateTime    @default(now())
+}
+
+enum AuditAction {
+  CREATE
+  UPDATE
+  DELETE
+  READ
+  LOGIN
+  LOGOUT
+}
+
+enum AuditStatus {
+  SUCCESS
+  FAILED
+  DENIED
+}

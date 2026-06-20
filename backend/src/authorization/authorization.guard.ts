@@ -7,10 +7,11 @@ import {
 import { Reflector } from '@nestjs/core';
 import { Request } from 'express';
 import { AuthenticatedUser } from 'src/auth/types/authenticated-user';
+import { AuditService } from 'src/audit/audit.service';
+import { AuditAction } from 'src/audit/audit.enums';
 import {
   REQUIRED_PERMISSION_KEY,
   RequiredPermission,
-  ResourcePathFactory,
 } from './authorization.decorator';
 import { AuthorizationService } from './authorization.service';
 
@@ -19,6 +20,7 @@ export class AuthorizationGuard implements CanActivate {
   constructor(
     private readonly reflector: Reflector,
     private readonly authorizationService: AuthorizationService,
+    private readonly auditService: AuditService,
   ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -31,9 +33,23 @@ export class AuthorizationGuard implements CanActivate {
       return true;
     }
 
-    const request = context.switchToHttp().getRequest<Request>();
+    const request = context.switchToHttp().getRequest<Request>() as Request & { auditFailureLogged?: boolean };
     const user = request.user as AuthenticatedUser | undefined;
     if (!user) {
+      request.auditFailureLogged = true;
+      const action = this.getAuditAction(request.method);
+      void this.auditService.logDenied({
+        route: request.originalUrl ?? request.url,
+        method: request.method,
+        reason: 'INSUFFICIENT_PERMISSIONS',
+        action,
+        ipAddress: (request.ip || request.socket?.remoteAddress) ?? null,
+        userAgent: request.headers['user-agent']?.toString() ?? null,
+        metadata: {
+          requiredPermission: requiredPermission.action,
+          resourcePath: this.resolveResourcePath(requiredPermission, request),
+        },
+      });
       throw new ForbiddenException('Authorization requires an authenticated user.');
     }
 
@@ -45,6 +61,22 @@ export class AuthorizationGuard implements CanActivate {
     );
 
     if (!allowed) {
+      request.auditFailureLogged = true;
+      const action = this.getAuditAction(request.method);
+      void this.auditService.logDenied({
+        userId: user.id,
+        route: request.originalUrl ?? request.url,
+        method: request.method,
+        reason: 'INSUFFICIENT_PERMISSIONS',
+        action,
+        ipAddress: (request.ip || request.socket?.remoteAddress) ?? null,
+        userAgent: request.headers['user-agent']?.toString() ?? null,
+        resultCode: 403,
+        metadata: {
+          requiredPermission: requiredPermission.action,
+          resourcePath,
+        },
+      });
       throw new ForbiddenException('Permission denied.');
     }
 
@@ -59,5 +91,22 @@ export class AuthorizationGuard implements CanActivate {
       return permission.resourcePath(request);
     }
     return permission.resourcePath;
+  }
+
+  private getAuditAction(method: string): AuditAction {
+    switch (method.toUpperCase()) {
+      case 'POST':
+        return AuditAction.CREATE;
+      case 'PUT':
+      case 'PATCH':
+        return AuditAction.UPDATE;
+      case 'DELETE':
+        return AuditAction.DELETE;
+      case 'GET':
+      case 'HEAD':
+      case 'OPTIONS':
+      default:
+        return AuditAction.READ;
+    }
   }
 }

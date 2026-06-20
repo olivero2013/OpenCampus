@@ -9,6 +9,8 @@ import {
 } from '@nestjs/common';
 import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
+import { AuditService } from 'src/audit/audit.service';
+import { AuditAction } from 'src/audit/audit.enums';
 import { LoginDto } from './dto/login.dto';
 import { RefreshDto } from './dto/refresh.dto';
 import { AuthResponseDto } from './dto/auth-response.dto';
@@ -19,7 +21,10 @@ import { AuthenticatedUser } from './types/authenticated-user';
 @Controller('auth')
 @ApiTags('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly auditService: AuditService,
+  ) {}
 
   @Public()
   @Post('login')
@@ -27,6 +32,18 @@ export class AuthController {
   async login(@Body() loginDto: LoginDto, @Request() req: any): Promise<AuthResponseDto> {
     const user = await this.authService.validateUser(loginDto.username, loginDto.password);
     if (!user) {
+      void this.auditService.logFailure({
+        route: req.originalUrl ?? req.url,
+        method: req.method,
+        reason: 'FAILED_AUTH',
+        action: AuditAction.READ,
+        ipAddress: req.ip ?? req.connection?.remoteAddress ?? null,
+        userAgent: req.headers?.['user-agent'] ?? null,
+        resultCode: 401,
+        metadata: {
+          attemptedUsername: loginDto.username,
+        },
+      });
       throw new UnauthorizedException('Invalid credentials');
     }
 
