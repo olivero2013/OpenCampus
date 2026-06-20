@@ -14,6 +14,16 @@ import {
   RequiredPermission,
 } from './authorization.decorator';
 import { AuthorizationService } from './authorization.service';
+import { ResourcePath } from './resource-path';
+
+declare global {
+  namespace Express {
+    interface Request {
+      filteredListEndpoint?: boolean;
+      auditFailureLogged?: boolean;
+    }
+  }
+}
 
 @Injectable()
 export class AuthorizationGuard implements CanActivate {
@@ -72,6 +82,14 @@ export class AuthorizationGuard implements CanActivate {
     );
 
     if (!allowed) {
+      // Check if this is a list endpoint (no specific resource ID)
+      // List endpoints should be allowed to pass through, with results filtered by permission
+      if (this.isListEndpoint(resourcePath, request.method)) {
+        // Mark this as a filtered list endpoint so services know to filter results
+        request.filteredListEndpoint = true;
+        return true;
+      }
+
       request.auditFailureLogged = true;
       const action = this.getAuditAction(request.method);
       void this.auditService.logDenied({
@@ -92,6 +110,32 @@ export class AuthorizationGuard implements CanActivate {
     }
 
     return true;
+  }
+
+  /**
+   * Determine if the resource path represents a list endpoint (no specific resource ID).
+   * Examples:
+   *   - "school" = list (no ID)
+   *   - "school:1" = single resource (has ID)
+   *   - "school:1/students" = related list (has ID) - not a list endpoint
+   */
+  private isListEndpoint(resourcePath: string, method: string): boolean {
+    // Only GET requests should be filtered
+    if (method.toUpperCase() !== 'GET') {
+      return false;
+    }
+
+    const segments = ResourcePath.split(resourcePath);
+    if (segments.length === 0) {
+      return false;
+    }
+
+    // Check if the first segment (primary resource) has no specific ID
+    const firstSegment = segments[0];
+    const [, firstSegmentId] = firstSegment.split(':');
+    
+    // If first segment has no ID, this is a list endpoint
+    return !firstSegmentId;
   }
 
   private resolveResourcePath(

@@ -1,26 +1,54 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Scope, Inject } from '@nestjs/common';
+import { REQUEST } from '@nestjs/core';
+import type { Request } from 'express';
 import { PrimsaService } from '../prisma/primsa.service';
+import { AuthorizationService } from 'src/authorization/authorization.service';
+import { PermissionAction } from 'src/authorization/actions.enum';
+import { AuthenticatedUser } from 'src/auth/types/authenticated-user';
 import { Student, Prisma } from '../generated/prisma/client';
 import { createStudentDto } from './dto/createStudent.dto';
 import { updateStudentDto } from './dto/updateStudent.dto';
 
-@Injectable()
+@Injectable({ scope: Scope.REQUEST })
 export class StudentsService {
 
-    constructor(private prisma:PrimsaService) {}
+    constructor(
+        private prisma: PrimsaService,
+        private authorizationService: AuthorizationService,
+        @Inject(REQUEST) private request: Request,
+    ) {}
 
     async findAll() {
-        return this.prisma.student.findMany();
+        const students = await this.prisma.student.findMany();
+        
+        // Apply permission-based filtering if this is a filtered list endpoint
+        if (this.request.filteredListEndpoint) {
+            const user = this.request.user as AuthenticatedUser | undefined;
+            if (user) {
+                return this.authorizationService.filterItemsByPermission(
+                    user.id,
+                    PermissionAction.READ,
+                    'students',
+                    students,
+                );
+            }
+        }
+        
+        return students;
     }
+    
     async findOne(id: number) {
         return this.prisma.student.findUniqueOrThrow({where:{id}})
     }
+    
     async createOne(data: createStudentDto) {
         return this.prisma.student.create({data});
     }
+    
     async deleteOne(id: number) {
         return this.prisma.student.delete({where: {id}});
     }
+    
     async changeOne(id: number, data: updateStudentDto) {
         return this.prisma.student.update({
             where: { id },
@@ -29,11 +57,26 @@ export class StudentsService {
     }
 
     async findBySchool(schoolId: number) {
-        return this.prisma.student.findMany({ where: { schoolId } });
+        const students = await this.prisma.student.findMany({ where: { schoolId } });
+        
+        // Apply permission-based filtering if this is a filtered list endpoint
+        if (this.request.filteredListEndpoint) {
+            const user = this.request.user as AuthenticatedUser | undefined;
+            if (user) {
+                return this.authorizationService.filterItemsByPermission(
+                    user.id,
+                    PermissionAction.READ,
+                    'students',
+                    students,
+                );
+            }
+        }
+        
+        return students;
     }
 
     async findByClass(classId: number) {
-        return this.prisma.student.findMany({ 
+        const students = await this.prisma.student.findMany({ 
             where: { 
                 classes: {
                     some: { classId }
@@ -41,6 +84,21 @@ export class StudentsService {
             },
             include: { classes: true }
         });
+        
+        // Apply permission-based filtering if this is a filtered list endpoint
+        if (this.request.filteredListEndpoint) {
+            const user = this.request.user as AuthenticatedUser | undefined;
+            if (user) {
+                return this.authorizationService.filterItemsByPermission(
+                    user.id,
+                    PermissionAction.READ,
+                    'students',
+                    students,
+                );
+            }
+        }
+        
+        return students;
     }
 
     async createInSchool(schoolId: number, data: createStudentDto) {

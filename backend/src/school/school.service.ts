@@ -1,14 +1,38 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Scope, Inject } from '@nestjs/common';
+import { REQUEST } from '@nestjs/core';
+import type { Request } from 'express';
 import { PrimsaService } from 'src/prisma/primsa.service';
+import { AuthorizationService } from 'src/authorization/authorization.service';
+import { PermissionAction } from 'src/authorization/actions.enum';
+import { AuthenticatedUser } from 'src/auth/types/authenticated-user';
 import { createSchoolDto } from './dto/createSchool.dto';
 import { updateSchoolDto } from './dto/updateSchool.dto';
 
-@Injectable()
+@Injectable({ scope: Scope.REQUEST })
 export class SchoolService {
-    constructor(private prisma: PrimsaService) {}
+    constructor(
+        private prisma: PrimsaService,
+        private authorizationService: AuthorizationService,
+        @Inject(REQUEST) private request: Request,
+    ) {}
 
     async findAll() {
-        return this.prisma.school.findMany();
+        const schools = await this.prisma.school.findMany();
+        
+        // Apply permission-based filtering if this is a filtered list endpoint
+        if (this.request.filteredListEndpoint) {
+            const user = this.request.user as AuthenticatedUser | undefined;
+            if (user) {
+                return this.authorizationService.filterItemsByPermission(
+                    user.id,
+                    PermissionAction.READ,
+                    'school',
+                    schools,
+                );
+            }
+        }
+        
+        return schools;
     }
 
     async findOne(id:number) {
