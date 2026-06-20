@@ -27,4 +27,42 @@ export class StudentsService {
             data
         })
     }
+
+    async findBySchool(schoolId: number) {
+        return this.prisma.student.findMany({ where: { schoolId } });
+    }
+
+    async findByClass(classId: number) {
+        return this.prisma.student.findMany({ 
+            where: { 
+                classes: {
+                    some: { classId }
+                }
+            },
+            include: { classes: true }
+        });
+    }
+
+    async createInSchool(schoolId: number, data: createStudentDto) {
+        return this.prisma.student.create({ data: { ...data, schoolId } });
+    }
+
+    async addStudentToClass(studentId: number, classId: number) {
+        return this.prisma.studentClass.create({
+            data: { studentId, classId }
+        });
+    }
+
+    async removeStudentFromClass(studentId: number, classId: number) {
+        return this.prisma.studentClass.deleteMany({
+            where: { studentId, classId }
+        });
+    }
+
+    async getClassesForStudent(studentId: number) {
+        return this.prisma.studentClass.findMany({
+            where: { studentId },
+            include: { class: true }
+        });
+    }
 }

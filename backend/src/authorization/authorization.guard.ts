@@ -54,10 +54,21 @@ export class AuthorizationGuard implements CanActivate {
     }
 
     const resourcePath = this.resolveResourcePath(requiredPermission, request);
+
+    // Build structured scope from known route params so permission checks can use contextual scope
+    const scope = {
+      districtId: (request.params as any).districtId,
+      officeId: (request.params as any).officeId ?? (request.params as any).regionalOfficeId,
+      schoolId: (request.params as any).schoolId,
+      classId: (request.params as any).classId,
+      studentId: (request.params as any).studentId,
+    };
+
     const allowed = await this.authorizationService.canPerform(
       user.id,
       requiredPermission.action,
       resourcePath,
+      scope,
     );
 
     if (!allowed) {

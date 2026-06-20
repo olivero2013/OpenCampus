@@ -21,6 +21,7 @@ model Student {
   schoolId        Int
   school          School   @relation(fields: [schoolId], references: [id])
 
+  classes         StudentClass[]
   contacts        StudentContact[]
 }
 
@@ -29,6 +30,28 @@ model School {
   name     String
 
   students Student[]
+  classes  Class[]
+}
+
+model Class {
+  id              Int      @id @default(autoincrement())
+  name            String
+  gradeLevel      String?
+  schoolId        Int
+  
+  school          School   @relation(fields: [schoolId], references: [id])
+  students        StudentClass[]
+}
+
+model StudentClass {
+  id        Int     @id @default(autoincrement())
+  studentId Int
+  classId   Int
+  
+  student   Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  class     Class   @relation(fields: [classId], references: [id], onDelete: Cascade)
+  
+  @@unique([studentId, classId])
 }
 
 model Contact {

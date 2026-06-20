@@ -6,14 +6,14 @@ import { RequirePermission } from 'src/authorization/authorization.decorator';
 import { PermissionAction } from 'src/authorization/actions.enum';
 import { ResourcePath } from 'src/authorization/resource-path';
 
-@Controller('students')
+@Controller('schools/:schoolId/students')
 export class StudentsController {
     constructor(private studentsService: StudentsService) {}
 
-    @RequirePermission(PermissionAction.READ, 'students')
+    @RequirePermission(PermissionAction.READ, (req) => `${ResourcePath.build({ type: 'schools', id: String(req.params.schoolId) })}/students`)
     @Get('')
-    findAll() {
-        return this.studentsService.findAll();
+    findAll(@Param('schoolId', ParseIntPipe) schoolId: number) {
+        return this.studentsService.findBySchool(schoolId);
     }
 
     @RequirePermission(PermissionAction.READ, (req) => ResourcePath.build({ type: 'students', id: String(req.params.id) }))
@@ -22,10 +22,10 @@ export class StudentsController {
         return this.studentsService.findOne(id)
     }
 
-    @RequirePermission(PermissionAction.CREATE, 'students')
+    @RequirePermission(PermissionAction.CREATE, (req) => `${ResourcePath.build({ type: 'schools', id: String(req.params.schoolId) })}/students`)
     @Post('')
-    createOne(@Body() data: createStudentDto) {
-        return this.studentsService.createOne(data);
+    createOne(@Param('schoolId', ParseIntPipe) schoolId: number, @Body() data: createStudentDto) {
+        return this.studentsService.createInSchool(schoolId, data);
     }
 
     @RequirePermission(PermissionAction.DELETE, (req) => ResourcePath.build({ type: 'students', id: String(req.params.id) }))

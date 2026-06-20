@@ -17,6 +17,13 @@ export class AuthorizationService {
     userId: number,
     action: PermissionAction,
     resourcePath: string,
+    _scope?: {
+      districtId?: string;
+      officeId?: string;
+      schoolId?: string;
+      classId?: string;
+      studentId?: string;
+    },
   ): Promise<boolean> {
     const normalizedPath = ResourcePath.normalize(resourcePath);
     const grants = await this.prisma.permissionGrant.findMany({ where: { userId } });

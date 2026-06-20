@@ -33,6 +33,7 @@ export class updateStudentDto {
   @IsBoolean()
   enrollment!: boolean;
 
+  @IsOptional()
   @IsNumber()
-  schoolAssignment!: number;
+  schoolId?: number;
 }
