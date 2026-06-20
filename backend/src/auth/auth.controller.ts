@@ -1,0 +1,61 @@
+import {
+  Body,
+  Controller,
+  HttpCode,
+  Post,
+  Request,
+  UseGuards,
+  UnauthorizedException,
+} from '@nestjs/common';
+import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
+import { AuthService } from './auth.service';
+import { LoginDto } from './dto/login.dto';
+import { RefreshDto } from './dto/refresh.dto';
+import { AuthResponseDto } from './dto/auth-response.dto';
+import { Public } from './auth.decorator';
+import { JwtAuthGuard } from './jwt-auth.guard';
+import { AuthenticatedUser } from './types/authenticated-user';
+
+@Controller('auth')
+@ApiTags('auth')
+export class AuthController {
+  constructor(private readonly authService: AuthService) {}
+
+  @Public()
+  @Post('login')
+  @ApiBody({ type: LoginDto })
+  async login(@Body() loginDto: LoginDto, @Request() req: any): Promise<AuthResponseDto> {
+    const user = await this.authService.validateUser(loginDto.username, loginDto.password);
+    if (!user) {
+      throw new UnauthorizedException('Invalid credentials');
+    }
+
+    const ipAddress = req.ip ?? req.connection?.remoteAddress ?? undefined;
+    const userAgent = req.headers?.['user-agent'] ?? undefined;
+
+    return this.authService.login(user, ipAddress, userAgent);
+  }
+
+  @Public()
+  @Post('refresh')
+  @ApiBody({ type: RefreshDto })
+  async refresh(@Body() refreshDto: RefreshDto): Promise<AuthResponseDto> {
+    return this.authService.refresh(refreshDto.sessionId, refreshDto.refreshToken);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @Post('logout')
+  @HttpCode(204)
+  async logout(@Request() req: { user: AuthenticatedUser }): Promise<void> {
+    await this.authService.logout(req.user.sessionId);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @Post('logout-all')
+  @HttpCode(204)
+  async logoutAll(@Request() req: { user: AuthenticatedUser }): Promise<void> {
+    await this.authService.logoutAll(req.user.id);
+  }
+}

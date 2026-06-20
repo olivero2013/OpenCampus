@@ -88,9 +88,44 @@ model StudentContact {
 }
 
 model User {
-  id           Int      @id @default(autoincrement())
-  username     String   @unique
+  id           Int           @id @default(autoincrement())
+  username     String        @unique
   passwordHash String
+  tokenVersion Int           @default(1)
 
-  createdAt    DateTime @default(now())
+  createdAt    DateTime      @default(now())
+  enabled      Boolean       @default(true)
+
+  sessions     UserSession[]
+  permissionGrants PermissionGrant[]
+}
+
+model UserSession {
+  id               Int      @id @default(autoincrement())
+  userId           Int
+  refreshTokenHash String
+  ipAddress        String?
+  userAgent        String?
+  createdAt        DateTime @default(now())
+  lastUsedAt       DateTime @updatedAt
+  expiresAt        DateTime
+  revokedAt        DateTime?
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([revokedAt])
+}
+
+model PermissionGrant {
+  id           Int    @id @default(autoincrement())
+  userId       Int
+  action       String
+  resourcePath String
+  allow        Boolean
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+  @@index([action])
 }

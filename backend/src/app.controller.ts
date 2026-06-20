@@ -7,18 +7,7 @@ import { Public } from './auth/auth.decorator';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService, private AuthService: AuthService) {}
-
-  @Public()
-  @Post('/auth/login')
-  async login(@Request() req){
-    return this.AuthService.login(req.user);
-  }
-
-  @Post('auth/logout')
-  async logout(@Request() req) {
-    return req.logout();
-  }
+  constructor(private readonly appService: AppService, private authService: AuthService) {}
 
   @Get()
   getHello(): string {
