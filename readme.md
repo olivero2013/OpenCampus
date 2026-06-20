@@ -100,11 +100,11 @@ This ensures full traceability across the system.
 ---
 
 ### 📌 Roadmap
- - [] Frontend(Probably React)
- - [] Advanced timetable & scheduling engine
- - [] Gradebook & reporting tools
- - [] API key system for integrations
- - [] Multi-school district support
+ - [ ] Frontend(Probably React)
+ - [ ] Advanced timetable & scheduling engine
+ - [ ] Gradebook & reporting tools
+ - [ ] API key system for integrations
+ - [ ] Multi-school district support
  - [x] Event-driven audit streaming
 
 ---
