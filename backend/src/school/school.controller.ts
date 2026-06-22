@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { SchoolService } from './school.service';
 import { createSchoolDto } from './dto/createSchool.dto';
 import { updateSchoolDto } from './dto/updateSchool.dto';
@@ -24,7 +24,7 @@ export class SchoolController {
    
     @RequirePermission(PermissionAction.READ, (req) => `${ResourcePath.build({ type: 'school', id: String(req.params.id) })}/students`)
     @Get('/:id/students')
-    findAllStudentInSchool(@Param('id') id:string) {
+    findAllStudentInSchool(@Param('id', ParseIntPipe) id:string) {
         return this.schoolService.findAllStudentsInSchool(id);
     }
 
