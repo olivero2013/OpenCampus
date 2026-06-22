@@ -1,7 +1,12 @@
+import { Routes, Route } from "react-router-dom";
+import AdminLayout from './layout/AdminLayout'
 
-function App() {
-
-  return <div></div>
+const App = () => {
+    return (
+    <Routes>
+      <Route path="/admin" element={<AdminLayout />} />
+    </Routes>
+  );
 }
 
 export default App
