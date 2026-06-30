@@ -24,6 +24,8 @@ async function bootstrap() {
 
   SwaggerModule.setup('docs', app, document);
 
+  app.enableCors();
+
   app.useGlobalInterceptors(auditInterceptor);
   app.use((req, res, next) => auditMiddleware.use(req, res, next));
   app.useGlobalPipes(new ValidationPipe({ transform: true }));

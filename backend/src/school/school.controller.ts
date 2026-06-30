@@ -5,6 +5,7 @@ import { updateSchoolDto } from './dto/updateSchool.dto';
 import { RequirePermission } from 'src/authorization/authorization.decorator';
 import { PermissionAction } from 'src/authorization/actions.enum';
 import { ResourcePath } from 'src/authorization/resource-path';
+import { Public } from 'src/auth/auth.decorator';
 
 @Controller('school')
 export class SchoolController {

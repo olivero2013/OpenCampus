@@ -24,7 +24,7 @@ export class AuditService {
     metadata?: unknown;
   }): Promise<void> {
     try {
-      const auditPayload: Prisma.AuditLogCreateInput = {
+      const auditPayload: Prisma.AuditLogUncheckedCreateInput = {
         userId: data.userId ?? null,
         action: data.action,
         status: data.status ?? AuditStatus.SUCCESS,
@@ -45,8 +45,41 @@ export class AuditService {
         data: auditPayload,
       });
     } catch (error) {
+      if (this.isNullUserIdConstraintViolation(error, data.userId)) {
+        this.logger.warn(
+          'Skipped anonymous audit log because database schema still requires AuditLog.userId; reconcile Prisma migrations to allow null userId.',
+        );
+        return;
+      }
+
       this.logger.error('Unable to persist audit log', error as Error);
     }
+  }
+
+  private isNullUserIdConstraintViolation(error: unknown, userId?: number | null): boolean {
+    if (userId !== null && userId !== undefined) {
+      return false;
+    }
+
+    const knownError = error as {
+      code?: string;
+      meta?: {
+        driverAdapterError?: {
+          cause?: {
+            constraint?: {
+              fields?: string[];
+            };
+          };
+        };
+      };
+    };
+
+    if (knownError.code !== 'P2011') {
+      return false;
+    }
+
+    const fields = knownError.meta?.driverAdapterError?.cause?.constraint?.fields ?? [];
+    return fields.includes('userId');
   }
 
   async logDenied(data: {

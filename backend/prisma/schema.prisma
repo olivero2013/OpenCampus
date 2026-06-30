@@ -1,6 +1,6 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
   moduleFormat = "cjs"
 }
 
@@ -9,74 +9,74 @@ datasource db {
 }
 
 model Student {
-  id              Int      @id @default(autoincrement())
-  firstname       String
-  lastname        String
-  preferredname   String?
-  studentID       Int      @unique
-  dateOfBirth     DateTime
-  gender          String
-  enrollment      Boolean
+  id            Int      @id @default(autoincrement())
+  firstname     String
+  lastname      String
+  preferredname String?
+  studentID     Int      @unique
+  dateOfBirth   DateTime
+  gender        String
+  enrollment    Boolean
 
-  schoolId        Int
-  school          School   @relation(fields: [schoolId], references: [id])
+  schoolId Int
+  school   School @relation(fields: [schoolId], references: [id])
 
-  classes         StudentClass[]
-  contacts        StudentContact[]
+  classes  StudentClass[]
+  contacts StudentContact[]
 }
 
 model School {
-  id       Int       @id @default(autoincrement())
-  name     String
+  id   Int    @id @default(autoincrement())
+  name String
 
   students Student[]
   classes  Class[]
 }
 
 model Class {
-  id              Int      @id @default(autoincrement())
-  name            String
-  gradeLevel      String?
-  schoolId        Int
-  
-  school          School   @relation(fields: [schoolId], references: [id])
-  students        StudentClass[]
+  id         Int     @id @default(autoincrement())
+  name       String
+  gradeLevel String?
+  schoolId   Int
+
+  school   School         @relation(fields: [schoolId], references: [id])
+  students StudentClass[]
 }
 
 model StudentClass {
-  id        Int     @id @default(autoincrement())
+  id        Int @id @default(autoincrement())
   studentId Int
   classId   Int
-  
-  student   Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
-  class     Class   @relation(fields: [classId], references: [id], onDelete: Cascade)
-  
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  class   Class   @relation(fields: [classId], references: [id], onDelete: Cascade)
+
   @@unique([studentId, classId])
 }
 
 model Contact {
-  id              Int      @id @default(autoincrement())
+  id Int @id @default(autoincrement())
 
-  firstname       String
-  lastname        String
-  preferredname   String?
+  firstname     String
+  lastname      String
+  preferredname String?
 
-  phoneNumber     String?
-  mobileNumber    String?
-  workPhone       String?
+  phoneNumber  String?
+  mobileNumber String?
+  workPhone    String?
 
-  email           String?
+  email String?
 
-  address1        String?
-  address2        String?
-  city            String?
-  state           String?
-  zipCode         String?
+  address1 String?
+  address2 String?
+  city     String?
+  state    String?
+  zipCode  String?
 
-  employer        String?
-  occupation      String?
+  employer   String?
+  occupation String?
 
-  students        StudentContact[]
+  students StudentContact[]
 }
 
 model StudentContact {
@@ -92,14 +92,14 @@ model StudentContact {
 
   primaryGuardian Boolean @default(false)
 
-  receivesMailings Boolean @default(true)
-  receivesReportCards Boolean @default(true)
+  receivesMailings         Boolean @default(true)
+  receivesReportCards      Boolean @default(true)
   receivesAttendanceAlerts Boolean @default(true)
   receivesDisciplineAlerts Boolean @default(true)
 
   livesWithStudent Boolean @default(false)
 
-  custodyRights Boolean @default(false)
+  custodyRights     Boolean @default(false)
   educationalRights Boolean @default(false)
 
   sortOrder Int @default(0)
@@ -111,26 +111,27 @@ model StudentContact {
 }
 
 model User {
-  id           Int           @id @default(autoincrement())
-  username     String        @unique
+  id           Int    @id @default(autoincrement())
+  username     String @unique
   passwordHash String
-  tokenVersion Int           @default(1)
+  tokenVersion Int    @default(1)
 
-  createdAt    DateTime      @default(now())
-  enabled      Boolean       @default(true)
+  createdAt DateTime @default(now())
+  enabled   Boolean  @default(true)
 
-  sessions     UserSession[]
+  sessions         UserSession[]
   permissionGrants PermissionGrant[]
+  Logs             AuditLog[]
 }
 
 model UserSession {
-  id               Int      @id @default(autoincrement())
+  id               Int       @id @default(autoincrement())
   userId           Int
   refreshTokenHash String
   ipAddress        String?
   userAgent        String?
-  createdAt        DateTime @default(now())
-  lastUsedAt       DateTime @updatedAt
+  createdAt        DateTime  @default(now())
+  lastUsedAt       DateTime  @updatedAt
   expiresAt        DateTime
   revokedAt        DateTime?
 
@@ -141,7 +142,7 @@ model UserSession {
 }
 
 model PermissionGrant {
-  id           Int    @id @default(autoincrement())
+  id           Int     @id @default(autoincrement())
   userId       Int
   action       String
   resourcePath String
@@ -168,6 +169,8 @@ model AuditLog {
   description String?
   metadata    Json?
   createdAt   DateTime    @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
 }
 
 enum AuditAction {
